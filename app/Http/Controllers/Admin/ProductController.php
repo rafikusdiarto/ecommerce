@@ -69,9 +69,10 @@ class ProductController extends Controller
 
             return redirect()->route('allproduct')->with('message', 'new product successfully added');
 
-        } catch (\Throwable $th) {
-            $message = $th->getMessage();
-            var_dump('Exception Message: '. $message);
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
 
     }
