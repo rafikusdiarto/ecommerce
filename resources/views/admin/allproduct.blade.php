@@ -36,7 +36,7 @@ All Product | Rawon E-Commerce
                             <a href="{{route('editproductimg', $product->id)}}" class="btn btn-warning">Edit</a>
 
                         </td>
-                        <td>{{$product->price}}</td>
+                        <td>@currency($product->price)</td>
                         <td>{{$product->slug}}</td>
                         <td>
                             <a href="{{route('editproduct', $product->id)}}" class="btn btn-warning">Edit</a>

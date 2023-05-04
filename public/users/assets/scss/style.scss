@@ -1,37 +1,37 @@
-/* Template Name: Destrin
-   Author: Themesdesign
-   Version: 1.0.0
-   File Description: Main Css file of the template
-*/
+/*-----------------------------------------------------------------------------------
+    Template Name: Hmart-Smart Product eCommerce html Template
+    Version: 1.0
+-----------------------------------------------------------------------------------
+    
+    CSS INDEX
+    ===================
+	
+    01. Template default CSS
+    02. Header
+    03. Hero
+    04. Navigation
+    05. Features
+    06. Partner
+    07. Banner
+    08. Pricing
+    09. Testimonial
+    10. Footer
+    11. Animation
+    12. Intro
 
-/****************************************\
+-----------------------------------------------------------------------------------*/
 
-01.general
-02.helper
-03.components
-04.menu
-05.home
-06.sevices
-07.features
-08.testimonial
-09.pricing
-10.contact
-11.footer
-12.responsive
+// google fonts
 
-*****************************************/
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 @import "variables";
-@import "general";
-@import "helper";
-@import "components";
-@import "menu";
-@import "home";
-@import "services";
-@import "features";
-@import "testimonial";
-@import "pricing";
-@import "contact";
+@import "common";
+@import "header";
+@import "hero";
+@import "component";
+@import "responsive-class";
 @import "footer";
-@import "responsive";
+@import "about";
+@import "shop";
+@import "contact";
