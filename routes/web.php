@@ -26,8 +26,8 @@ Route::get('/', function () {
 
 Route::get('/redirect', [RedirectController::class, 'index']);
 
-Route::get('/user',[\App\Http\Controllers\User\DashboardUserController::class, 'index' ]);
 
+// admin
 Route::controller(DashboardController::class) -> group(function(){
     Route::get('/admin/dashboard', 'index')->name('index');
 });
@@ -65,5 +65,8 @@ Route::controller(OrderController::class) -> group(function(){
     Route::get('/admin/pending-order', 'Index')->name('pendingorder');
 });
 
+
+// user
+Route::get('/user',[\App\Http\Controllers\User\DashboardUserController::class, 'index' ]);
 
 require __DIR__.'/auth.php';

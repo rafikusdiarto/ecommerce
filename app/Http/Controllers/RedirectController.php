@@ -22,8 +22,8 @@ class RedirectController extends Controller
 
         } elseif($roleUser == 'user'){
             return redirect('/user');
-        } else {
-            return redirect('/logout');
+        } else {    
+            return redirect('/');
         }
 
     }

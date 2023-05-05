@@ -62,7 +62,7 @@
                             </span>
                             <div class="thumb">
                                 <a href="single-product.html" class="image">
-                                    <img src="assets/images/product-image/1.webp" alt="Product" />
+                                    <img src="{{asset('assets/images/product-image/1.webp')}}" alt="Product" />
                                     <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />
                                 </a>
                             </div>
@@ -90,8 +90,8 @@
                             </span>
                             <div class="thumb">
                                 <a href="single-product.html" class="image">
-                                    <img src="assets/images/product-image/2.webp" alt="Product" />
-                                    <img class="hover-image" src="assets/images/product-image/2.webp" alt="Product" />
+                                    <img src="{{asset('assets/images/product-image/2.webp')}}" alt="Product" />
+                                    <img class="hover-image" src="{{asset('assets/images/product-image/2.webp')}}" alt="Product" />
                                 </a>
                             </div>
                             <div class="content">
@@ -118,7 +118,7 @@
                             </span>
                             <div class="thumb">
                                 <a href="single-product.html" class="image">
-                                    <img src="assets/images/product-image/3.webp" alt="Product" />
+                                    <img src="{{asset('assets/images/product-image/3.webp')}}" alt="Product" />
                                     <img class="hover-image" src="assets/images/product-image/3.webp" alt="Product" />
                                 </a>
                             </div>
@@ -145,7 +145,7 @@
                             </span>
                             <div class="thumb">
                                 <a href="single-product.html" class="image">
-                                    <img src="assets/images/product-image/4.webp" alt="Product" />
+                                    <img src="{{asset('assets/images/product-image/4.webp')}}" alt="Product" />
                                     <img class="hover-image" src="assets/images/product-image/1.webp" alt="Product" />
                                 </a>
                             </div>
