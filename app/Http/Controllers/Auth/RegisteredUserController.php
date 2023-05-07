@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -15,6 +16,9 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+    protected function user(User $user){
+        $user->assignRole('user');
+    }
     /**
      * Display the registration view.
      */
@@ -33,19 +37,55 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            // 'role' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // $input = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
-        event(new Registered($user));
+        // $user = User::create($input);
+        // $user->assignRole($request->input('roles'));
 
-        Auth::login($user);
+        // return redirect()->route('users.index')
+        //                 ->with('success','User created successfully');
 
-        return redirect(RouteServiceProvider::HOME);
+        $role = $request['role'];
+
+        if ($role==='user') {
+            return DB::transaction(function () use ($request) {
+                return tap(User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]),
+                function ($user) {
+                    $this->user($user);
+                    // event(new Registered($user));
+                    return redirect()->route('login');
+                });
+            });
+        } else {
+            return DB::transaction(function () use ($request) {
+                return tap(User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]),
+                function (User $user) {
+                    $user->assignRole('user');
+
+                    event(new Registered($user));
+
+                    return redirect('/');
+                });
+            });
+        }
+
+
+
     }
 }
