@@ -2,7 +2,7 @@
     <ul>
         <li class=""><a href="/user">Home</a>
         </li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="/about">About</a></li>
         <li class="dropdown position-static"><a href="about.html">Pages <i class="fa fa-angle-down"></i></a>
             <ul class="mega-menu d-block">
                 <li class="d-flex">

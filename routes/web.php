@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\User\CategoryUserController;
+use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
@@ -68,7 +70,7 @@ Route::controller(OrderController::class) -> group(function(){
 
 
 // user
-Route::get('/user',[\App\Http\Controllers\User\DashboardUserController::class, 'index' ]);
+Route::get('/user',[DashboardUserController::class, 'index' ]);
 
 Route::controller(CategoryUserController::class) -> group(function(){
     Route::get('/user/category/laptop', 'laptop')->name('laptop.show');
@@ -76,4 +78,5 @@ Route::controller(CategoryUserController::class) -> group(function(){
     Route::get('/user/category/components', 'components')->name('components.show');
 });
 
+Route::get('/about', [AboutController::class, 'index']);
 require __DIR__.'/auth.php';

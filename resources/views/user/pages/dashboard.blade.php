@@ -1,6 +1,9 @@
 @extends('user.layouts.app')
 
 @section('content')
+    <div class="section ">
+    @include('user.components.hero')
+    </div>
     <div class="banner-area style-two pt-100px pb-100px">
         <div class="container">
             <div class="row">

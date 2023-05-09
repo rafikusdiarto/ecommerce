@@ -123,9 +123,7 @@
         @include('user.components.navbar-mobile')
         <!-- OffCanvas Menu End -->
         <!-- Hero/Intro Slider Start -->
-        <div class="section ">
-        @include('user.components.hero')
-        </div>
+        
         <!-- Hero/Intro Slider End -->
         <!-- Banner Area Start -->
         @yield('content')
