@@ -91,7 +91,7 @@
     <div id="mapid">
         <div class="mapouter">
             <div class="gmap_canvas">
-                <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=121%20King%20St%2C%20Melbourne%20VIC%203000%2C%20Australia&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=jember, kaliwates&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
                 <a href="https://sites.google.com/view/maps-api-v2/mapv2"></a>
             </div>
         </div>
