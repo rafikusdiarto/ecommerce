@@ -1,10 +1,6 @@
 <div class="main-menu position-relative">
     <ul>
-        <li class="dropdown"><a href="#">Home <i class="fa fa-angle-down"></i></a>
-            <ul class="sub-menu">
-                <li><a href="index.html">Home 1</a></li>
-                <li><a href="index-2.html">Home 2</a></li>
-            </ul>
+        <li class=""><a href="/user">Home</a>
         </li>
         <li><a href="about.html">About</a></li>
         <li class="dropdown position-static"><a href="about.html">Pages <i class="fa fa-angle-down"></i></a>

@@ -4,19 +4,39 @@
     <div class="banner-area style-two pt-100px pb-100px">
         <div class="container">
             <div class="row">
-                @foreach ($getCategory as $item)
-                    <div class="col-md-4">
-                        <div class="single-banner nth-child-2 mb-lm-30px">
-                            <img src="{{ asset('users/assets/images/banner/6.webp') }}" alt="">
-                            <div class="banner-content nth-child-3">
-                                <h5 class="title">{{ $item->category_name }}</h5>
-                                {{-- <span class="category">{{$item->price}}</span> --}}
-                                <a href="shop-left-sidebar.html" class="shop-link">Shop Now <i class="fa fa-arrow-right"
-                                        aria-hidden="true"></i></a>
-                            </div>
+                <div class="col-md-4">
+                    <div class="single-banner nth-child-2 mb-lm-30px">
+                        <img src="{{ asset('users/assets/images/banner/6.webp') }}" alt="">
+                        <div class="banner-content nth-child-3">
+                            <h5 class="title">Laptop</h5>
+                            {{-- <span class="category">{{$item->price}}</span> --}}
+                            <a href="{{route('laptop.show')}}" class="shop-link">Shop Now <i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></a>
                         </div>
                     </div>
-                @endforeach
+                </div>
+                <div class="col-md-4">
+                    <div class="single-banner nth-child-2 mb-lm-30px">
+                        <img src="{{ asset('users/assets/images/banner/6.webp') }}" alt="">
+                        <div class="banner-content nth-child-3">
+                            <h5 class="title">Display & Desktop</h5>
+                            {{-- <span class="category">{{$item->price}}</span> --}}
+                            <a href="{{route('display.show')}}" class="shop-link">Shop Now <i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-banner nth-child-2 mb-lm-30px">
+                        <img src="{{ asset('users/assets/images/banner/6.webp') }}" alt="">
+                        <div class="banner-content nth-child-3">
+                            <h5 class="title">Components</h5>
+                            {{-- <span class="category">{{$item->price}}</span> --}}
+                            <a href="{{route('components.show')}}" class="shop-link">Shop Now <i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
