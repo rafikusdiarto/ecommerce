@@ -77,7 +77,7 @@ Route::controller(CategoryUserController::class) -> group(function(){
     Route::get('/user/category/display-desktop', 'display')->name('display.show');
     Route::get('/user/category/components', 'components')->name('components.show');
 });
-Route::get('/about', [AboutController::class, 'index']);
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/user/about', [AboutController::class, 'index']);
+Route::get('/user/contact', [ContactController::class, 'index']);
 
 require __DIR__.'/auth.php';
