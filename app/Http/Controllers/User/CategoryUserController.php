@@ -14,7 +14,6 @@ class CategoryUserController extends Controller
         $this->middleware(['role:user']);
     }
 
-
     public function laptop(){
         try {
             return view('user.pages.category-laptop');

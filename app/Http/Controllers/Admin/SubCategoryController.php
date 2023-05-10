@@ -17,7 +17,7 @@ class SubCategoryController extends Controller
     public function Index(){
         try {
             $allsubcategories = Subcategory::latest()->get();
-            return view('admin.allsubcategory', compact('allsubcategories'));
+            return view('admin.pages.allsubcategory', compact('allsubcategories'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
     public function AddSubCategory(){
         try {
             $categories = Category::latest()->get();
-            return view('admin.addsubcategory', compact('categories'));
+            return view('admin.pages.addsubcategory', compact('categories'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -65,7 +65,7 @@ class SubCategoryController extends Controller
     public function EditSubCategory($id){
         try {
             $subcatinfo = Subcategory::findOrFail($id);
-            return view('admin.editsubcategory', compact('subcatinfo'));
+            return view('admin.pages.editsubcategory', compact('subcatinfo'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {

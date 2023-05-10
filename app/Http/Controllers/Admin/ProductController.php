@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function Index(){
         try {
             $products = Product::latest()->get();
-            return view('admin.allproduct', compact('products'));
+            return view('admin.pages.allproduct', compact('products'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -30,7 +30,7 @@ class ProductController extends Controller
         try {
             $categories = Category::latest()->get();
             $subcategories = Subcategory::latest()->get();
-            return view('admin.addproduct', compact('categories', 'subcategories'));
+            return view('admin.pages.addproduct', compact('categories', 'subcategories'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -92,7 +92,7 @@ class ProductController extends Controller
     public function EditProductImg($id){
         try {
             $product_info = Product::findOrFail($id);
-            return view('admin.editproductimg', compact('product_info'));
+            return view('admin.pages.editproductimg', compact('product_info'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -128,7 +128,7 @@ class ProductController extends Controller
     public function EditProduct($id){
         try {
             $product_info = Product::findOrFail($id);
-            return view('admin.editproduct', compact('product_info'));
+            return view('admin.pages.editproduct', compact('product_info'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {

@@ -12,9 +12,9 @@ class DashboardController extends Controller
         $this->middleware(['role:admin']);
     }
 
-    public function Index(){
+    public function index(){
         try {
-            return view('admin.layout.template');
+            return view('admin.pages.dashboard');
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {

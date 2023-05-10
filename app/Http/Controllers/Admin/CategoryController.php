@@ -18,7 +18,7 @@ class CategoryController extends Controller
         try {
             $categories = Category::latest()->get();
             // return response()->json($categories);
-            return view('admin.allcategory', compact('categories'));
+            return view('admin.pages.allcategory', compact('categories'));
 
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
     public function AddCategory(){
         try {
-            return view('admin.addcategory');
+            return view('admin.pages.addcategory');
 
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
@@ -60,7 +60,7 @@ class CategoryController extends Controller
     public function EditCategory($id){
         try {
             $category_info = Category::findOrFail($id);
-            return view('admin.editcategory',compact('category_info'));
+            return view('admin.pages.editcategory',compact('category_info'));
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
