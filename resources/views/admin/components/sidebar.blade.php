@@ -79,7 +79,7 @@
       </li>
       <li class="menu-item {{ (request()->segment(2) == 'all-category') ? 'active' : '' }}">
           <a href="{{route('allcategory')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <i class="menu-icon tf-icons bx bx-category"></i>
               <div data-i18n="Analytics">All Category</div>
           </a>
       </li>
@@ -88,7 +88,7 @@
       </li>
       <li class="menu-item {{ (request()->segment(2) == 'all-subcategory') ? 'active' : '' }}">
           <a href="{{route('allsubcategory')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <i class="menu-icon tf-icons bx bx-copy-alt"></i>
               <div data-i18n="Analytics">All Sub Category</div>
           </a>
       </li>
@@ -97,7 +97,7 @@
       </li>
       <li class="menu-item {{ (request()->segment(2) == 'all-product') ? 'active' : '' }}">
           <a href="{{route('allproduct')}}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <i class="menu-icon tf-icons bx bx-store"></i>
               <div data-i18n="Analytics">All Product</div>
           </a>
       </li>
@@ -106,7 +106,7 @@
       </li>
       <li class="menu-item {{ (request()->segment(2) == 'pending-order') ? 'active' : '' }}">
           <a href="{{route('pendingorder')}}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <i class='menu-icon tf-icons bx bxs-hourglass-top' ></i>
             <div data-i18n="Analytics">Pending Orders</div>
           </a>
       </li>
