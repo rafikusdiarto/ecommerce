@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="index.html" class="app-brand-link">
+      <a href="{{route('index')}}" class="app-brand-link">
         <span class="app-brand-logo demo">
           <svg
             width="25"
@@ -68,8 +68,8 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
-        <a href="{{route('index')}}" class="menu-link">
+      <li class="menu-item {{ (request()->segment(2) == 'dashboard') ? 'active' : '' }}">
+        <a href="{{route('index')}}" class="menu-link ">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
         </a>
@@ -77,7 +77,7 @@
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Category</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item {{ (request()->segment(2) == 'all-category') ? 'active' : '' }}">
           <a href="{{route('allcategory')}}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">All Category</div>
@@ -86,7 +86,7 @@
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Sub Category</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item {{ (request()->segment(2) == 'all-subcategory') ? 'active' : '' }}">
           <a href="{{route('allsubcategory')}}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">All Sub Category</div>
@@ -95,7 +95,7 @@
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Product</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item {{ (request()->segment(2) == 'all-product') ? 'active' : '' }}">
           <a href="{{route('allproduct')}}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">All Product</div>
@@ -104,11 +104,11 @@
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Orders</span>
       </li>
-      <li class="menu-item">
+      <li class="menu-item {{ (request()->segment(2) == 'pending-order') ? 'active' : '' }}">
           <a href="{{route('pendingorder')}}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">Pending Orders</div>
           </a>
       </li>
     </ul>
-  </aside>
+</aside>

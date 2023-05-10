@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -14,7 +16,14 @@ class DashboardController extends Controller
 
     public function index(){
         try {
-            return view('admin.pages.dashboard');
+            $countUser = User::whereHas('roles', function($thisRole){
+                $thisRole->where('name', 'user');
+            })->count();
+
+            $this->param ['countProduct'] = Product::count();
+            $this->param ['countUser'] = $countUser;
+
+            return view('admin.pages.dashboard', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
