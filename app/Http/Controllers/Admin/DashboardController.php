@@ -13,7 +13,13 @@ class DashboardController extends Controller
     }
 
     public function Index(){
-        return view('admin.layout.template');
+        try {
+            return view('admin.layout.template');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 }
 
