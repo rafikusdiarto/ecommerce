@@ -15,51 +15,88 @@ class CategoryController extends Controller
     }
 
     public function Index(){
-        $categories = Category::latest()->get();
-        // return response()->json($categories);
-        return view('admin.allcategory', compact('categories'));
+        try {
+            $categories = Category::latest()->get();
+            // return response()->json($categories);
+            return view('admin.allcategory', compact('categories'));
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
     public function AddCategory(){
-        return view('admin.addcategory');
+        try {
+            return view('admin.addcategory');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
     public function StoreCategory(Request $request){
-        $request->validate([
-            'category_name'=>'required|unique:categories'
-        ]);
+        try {
+            $request->validate([
+                'category_name'=>'required|unique:categories'
+            ]);
 
-        Category::insert([
-            'category_name'=> $request->category_name,
-            'slug'=> strtolower(str_replace(' ','-',$request->category_name)) ,
-        ]);
+            Category::insert([
+                'category_name'=> $request->category_name,
+                'slug'=> strtolower(str_replace(' ','-',$request->category_name)) ,
+            ]);
 
-        return redirect()->route('allcategory')->with('message', 'Category Successfully Added !');
+            return redirect()->route('allcategory')->with('message', 'Category Successfully Added !');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
     public function EditCategory($id){
-        $category_info = Category::findOrFail($id);
-        return view('admin.editcategory',compact('category_info'));
+        try {
+            $category_info = Category::findOrFail($id);
+            return view('admin.editcategory',compact('category_info'));
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
     public function UpdateCategory(Request $request){
-        $category_id = $request->category_id;
+        try {
+            $category_id = $request->category_id;
 
-        $request->validate([
-            'category_name' => 'required|unique:categories'
-        ]);
+            $request->validate([
+                'category_name' => 'required|unique:categories'
+            ]);
 
-        Category::findOrFail($category_id)->update([
-            'category_name'=>$request->category_name,
-            'slug'=>strtolower(str_replace(' ','-', $request->category_name))
-        ]);
+            Category::findOrFail($category_id)->update([
+                'category_name'=>$request->category_name,
+                'slug'=>strtolower(str_replace(' ','-', $request->category_name))
+            ]);
 
-        return redirect()-> route('allcategory')-> with('message', 'category successfully update');
+            return redirect()-> route('allcategory')-> with('message', 'category successfully update');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
-    public function DeleteCategory($id)
-    {
-        Category::findOrFail($id)->delete();
-        return redirect()-> route('allcategory')-> with('message', 'category successfully delete');
+    public function DeleteCategory($id){
+        try {
+            Category::findOrFail($id)->delete();
+            return redirect()-> route('allcategory')-> with('message', 'category successfully delete');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 }
