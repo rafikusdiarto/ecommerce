@@ -388,7 +388,7 @@
                                         </div>
                                     </div>
                                     <div class="payment-img">
-                                        <a href="#"><img src="assets/images/icons/payment.png" alt=""></a>
+                                        <a href="#"><img src="{{asset('users/assets/images/icons/payment.png')}}" alt=""></a>
                                     </div>
                                 </div>
                             </div>

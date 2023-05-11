@@ -123,13 +123,13 @@
         @include('user.components.navbar-mobile')
         <!-- OffCanvas Menu End -->
         <!-- Hero/Intro Slider Start -->
-        
+
         <!-- Hero/Intro Slider End -->
         <!-- Banner Area Start -->
         @yield('content')
         <!-- Product Area End -->
         <!-- Fashion Area Start -->
-        <div class="fashion-area" data-bg-image="{{asset('users/assets/images/fashion/fashion-bg.webp')}}">
+        {{-- <div class="fashion-area" data-bg-image="{{asset('users/assets/images/fashion/fashion-bg.webp')}}">
             <div class="container h-100">
                 <div class="row justify-content-center align-items-center h-100">
                     <div class="col-12 text-center">
@@ -138,10 +138,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Fashion Area End -->
         <!-- Feature product area start -->
-        <div class="feature-product-area pt-100px pb-100px">
+        {{-- <div class="feature-product-area pt-100px pb-100px">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -233,10 +233,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Feature product area End -->
         <!-- Testimonial area start -->
-        <div class="trstimonial-area pt-100px pb-100px">
+        {{-- <div class="trstimonial-area pt-100px pb-100px">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -325,10 +325,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Testimonial area end-->
         <!-- Brand area start -->
-        <div class="brand-area pt-100px pb-100px">
+        {{-- <div class="brand-area pt-100px pb-100px">
             <div class="container">
                 <div class="brand-slider swiper-container">
                     <div class="swiper-wrapper align-items-center">
@@ -347,10 +347,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Brand area end -->
         <!-- Blog area start from here -->
-        <div class="main-blog-area pb-100px">
+        {{-- <div class="main-blog-area pb-100px">
             <div class="container">
                 <!-- section title start -->
                 <div class="row">
@@ -399,10 +399,11 @@
                     <!-- End single blog -->
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Blog area end here -->
         <!-- Footer Area Start -->
-        <div class="footer-area">
+        @include('user.components.footer')
+        {{-- <div class="footer-area">
             <div class="footer-container">
                 <div class="footer-top">
                     <div class="container">
@@ -507,7 +508,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Footer Area End -->
     </div>
 

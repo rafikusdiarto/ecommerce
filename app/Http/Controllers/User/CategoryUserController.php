@@ -16,7 +16,8 @@ class CategoryUserController extends Controller
 
     public function laptop(){
         try {
-            return view('user.pages.category-laptop');
+            $this->param ['getCategory'] = Product::all();
+            return view('user.pages.category-laptop', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -26,7 +27,8 @@ class CategoryUserController extends Controller
     }
     public function display(){
         try {
-            return view('user.pages.category-display');
+            $this->param ['getCategory'] = Product::all();
+            return view('user.pages.category-display', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -36,7 +38,8 @@ class CategoryUserController extends Controller
     }
     public function components(){
         try {
-            return view('user.pages.category-components');
+            $this->param ['getCategory'] = Product::all();
+            return view('user.pages.category-components', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
