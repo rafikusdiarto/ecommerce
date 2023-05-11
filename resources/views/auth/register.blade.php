@@ -16,7 +16,7 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <select for="role" :value="__('Role')" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" type="text" name="role" :value="old('role')" aria-hidden="" required autocomplete="username" hidden>
+        <select for="role" :value="__('Role')" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" type="text" name="role" :value="old('role')" aria-hidden="" required autocomplete="" hidden>
             <option selected>user</option>
           </select>
         {{-- <div class="mt-4">

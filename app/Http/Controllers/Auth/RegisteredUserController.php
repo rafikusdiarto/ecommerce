@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
-    protected function user(User $user){
-        $user->assignRole('user');
-    }
+    // protected function user(User $user){
+    //     $user->assignRole('user');
+    // }
     /**
      * Display the registration view.
      */
@@ -34,58 +35,28 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            // 'role' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'role' => 'required',
+            'password' => 'required|confirmed|min:8',
         ]);
 
-        // $input = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
+        try {
+            $input = $request->all();
+            $input['password'] = Hash::make($input['password']);
 
-        // $user = User::create($input);
-        // $user->assignRole($request->input('roles'));
+            $user = User::create($input);
+            $user->assignRole($request->input('role'));
 
-        // return redirect()->route('users.index')
-        //                 ->with('success','User created successfully');
+            return redirect()->route('login')
+                            ->with('success','User created successfully');
 
-        $role = $request['role'];
-
-        if ($role==='user') {
-            return DB::transaction(function () use ($request) {
-                return tap(User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                ]),
-                function ($user) {
-                    $this->user($user);
-                    // event(new Registered($user));
-                    return redirect()->route('login');
-                });
-            });
-        } else {
-            return DB::transaction(function () use ($request) {
-                return tap(User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => Hash::make($request->password),
-                ]),
-                function (User $user) {
-                    $user->assignRole('user');
-
-                    event(new Registered($user));
-
-                    return redirect('/');
-                });
-            });
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
-
-
 
     }
 }
