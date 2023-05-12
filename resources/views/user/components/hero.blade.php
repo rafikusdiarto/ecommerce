@@ -2,48 +2,36 @@
     <!-- Hero slider Active -->
     <div class="swiper-wrapper">
         <!-- Single slider item -->
-        <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="{{asset('users/assets/images/hero/bg/hero-bg-1.webp')}}">
+        <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="{{asset('users/assets/images/banner/banner-laptop.jpg')}}">
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
                         <div class="hero-slide-content slider-animated-1">
                             <span class="category">Welcome To Hmart</span>
-                            <h2 class="title-1">Your Home <br>
-                            Smart Devices & <br>
+                            <h2 class="title-1">Your Gaming Gear<br>
+                            Good Devices & <br>
                              Best Solution </h2>
                             <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
-                        <div class="show-case">
-                            <div class="hero-slide-image">
-                                <img src="{{asset('users/assets/images/hero/inner-img/hero-1-1.png')}}" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+
+                </div>
             </div>
         </div>
         <!-- Single slider item -->
-        <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="{{asset('users/assets/images/hero/bg/hero-bg-1.webp')}}">
+        <div class="hero-slide-item slider-height swiper-slide bg-color1" data-bg-image="{{asset('users/assets/images/banner/banner-laptop-1.jpg')}}">
             <div class="container h-100">
                 <div class="row h-100">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
                         <div class="hero-slide-content slider-animated-1">
                             <span class="category">Welcome To Hmart</span>
-                            <h2 class="title-1">Your Home <br>
-                            Smart Devices & <br>
+                            <h2 class="title-1">Your Gaming Gear<br>
+                            Good Devices & <br>
                              Best Solution </h2>
                             <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center position-relative align-items-end">
-                        <div class="show-case">
-                            <div class="hero-slide-image">
-                                <img src="{{asset('users/assets/images/hero/inner-img/hero-1-2.png')}}" alt="" />
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

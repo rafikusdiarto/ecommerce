@@ -38,16 +38,25 @@ class RegisteredUserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'role' => 'required',
-            'password' => 'required|confirmed|min:8',
-        ]);
+            'password' => 'required|confirmed|min:8|same:password_confirmation',
+            'password_confirmation' => 'required',
+        ],
+        [
+            'required' => ':attribute harus diisi.',
+            'email' => 'format surel tidak benar.',
+        ],);
 
         try {
-            $input = $request->all();
-            $input['password'] = Hash::make($input['password']);
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->email_verified_at = now();
+            $user->password = bcrypt($request->password);
+            $user->remember_token = \Str::random(60);
+            $user->save();
 
-            $user = User::create($input);
-            $user->assignRole($request->input('role'));
+            event(new Registered($user));
+            $user->assignRole('user');
 
             return redirect()->route('login')
                             ->with('success','User created successfully');
