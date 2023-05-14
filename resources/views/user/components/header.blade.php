@@ -25,7 +25,7 @@
                             <i class="pe-7s-like"></i>
                         </a>
                         <!-- Single Wedge End -->
-                        <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart offcanvas-toggle pr-0">
+                        <a href="{{url('/user/add-to-cart')}}" class="header-action-btn header-action-btn-cart pr-0" type="submit">
                             <i class="pe-7s-shopbag"></i>
                             <span class="header-action-num">01</span>
                             <!-- <span class="cart-amount">€30.00</span> -->

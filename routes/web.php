@@ -9,6 +9,7 @@ use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\User\CategoryUserController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
@@ -79,5 +80,6 @@ Route::controller(CategoryUserController::class) -> group(function(){
 });
 Route::get('/user/about', [AboutController::class, 'index']);
 Route::get('/user/contact', [ContactController::class, 'index']);
+Route::get('/user/add-to-cart', [CartController::class, 'index']);
 
 require __DIR__.'/auth.php';

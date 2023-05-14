@@ -7,7 +7,7 @@
     <div class="banner-area style-two pt-100px pb-100px">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000">
                     <div class="single-banner nth-child-2 mb-lm-30px p-5">
                         <img src="{{ asset('users/assets/images/category/laptop.jpg') }}" alt="">
                         <div class="banner-content nth-child-3">

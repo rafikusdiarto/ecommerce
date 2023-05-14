@@ -710,6 +710,9 @@
     <script src="{{asset('users/assets/js/plugins/venobox.min.js')}}"></script>
     <script src="{{asset('users/assets/js/plugins/jquery-ui.min.js')}}"></script>
     <script src="{{asset('users/assets/js/plugins/mailchimp-ajax.js')}}"></script>
+    <script>
+        AOS.init();
+    </script>
 
     <!-- Minify Version -->
     <!-- <script src="assets/js/vendor.min.js"></script>
