@@ -375,18 +375,17 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="pro-details-quality">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                                    <form action="{{url('/user/add-to-cart')}}" method="POST">
+                                        @csrf
+                                        <div class="pro-details-quality">
+                                            <div class="pro-details-cart">
+                                                <input type="hidden" value="{{$item->product_id}}" name="product_id" id="">
+                                                <input type="hidden" value="{{$item->product_id}}" name="product_id" id="">
+                                                <button class="add-cart" type="submit"> Add To
+                                                    Cart</button>
+                                            </div>
                                         </div>
-                                        <div class="pro-details-cart">
-                                            <button class="add-cart"> Add To
-                                                Cart</button>
-                                        </div>
-                                        <div class="pro-details-compare-wishlist pro-details-wishlist ">
-                                            <a href="wishlist.html"><i class="pe-7s-like"></i></a>
-                                        </div>
-                                    </div>
+                                    </form>
                                     <div class="payment-img">
                                         <a href="#"><img src="{{asset('users/assets/images/icons/payment.png')}}" alt=""></a>
                                     </div>
