@@ -1,5 +1,10 @@
 @extends('user.layouts.app')
 @section('content')
+@if (session()->has('message'))
+        <div class="alert alert-success">
+            {{session()->get('message')}}
+        </div>
+    @endif
 <div class="cart-main-area pt-100px pb-100px">
     <div class="container">
         <h3 class="cart-page-title">Your cart items</h3>

@@ -78,8 +78,10 @@ Route::controller(CategoryUserController::class) -> group(function(){
     Route::get('/user/category/display-desktop', 'display')->name('display.show');
     Route::get('/user/category/components', 'components')->name('components.show');
 });
+
 Route::get('/user/about', [AboutController::class, 'index']);
 Route::get('/user/contact', [ContactController::class, 'index']);
-Route::get('/user/add-to-cart', [CartController::class, 'index']);
+Route::get('/user/my-cart', [CartController::class, 'index'])->name('mycart');
+Route::post('/user/add-to-cart', [DashboardUserController::class, 'addToCart'])->name('addproductcart');
 
 require __DIR__.'/auth.php';

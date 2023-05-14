@@ -375,17 +375,21 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <form action="{{url('/user/add-to-cart')}}" method="POST">
+
+                                    <div class="pro-details-quality">
+                                        <form action="{{url('/user/add-to-cart')}}" method="POST">
                                         @csrf
-                                        <div class="pro-details-quality">
-                                            <div class="pro-details-cart">
-                                                <input type="hidden" value="{{$item->product_id}}" name="product_id" id="">
-                                                <input type="hidden" value="{{$item->product_id}}" name="product_id" id="">
-                                                <button class="add-cart" type="submit"> Add To
-                                                    Cart</button>
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="number" name="quantity" min="1" placeholder="1" />
                                             </div>
-                                        </div>
-                                    </form>
+                                            <div class="pro-details-cart">
+                                                <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id">
+                                                <input type="hidden" value="{{$item->price}}" name="price" id="price">
+                                                <input type="hidden" value="1" name="quantity" id="quantity">
+                                                <button class="add-cart" type="submit"> Add To Cart</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <div class="payment-img">
                                         <a href="#"><img src="{{asset('users/assets/images/icons/payment.png')}}" alt=""></a>
                                     </div>
