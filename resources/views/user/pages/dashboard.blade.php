@@ -11,8 +11,6 @@
                     <div class="single-banner nth-child-2 mb-lm-30px p-5">
                         <img src="{{ asset('users/assets/images/category/laptop.jpg') }}" alt="">
                         <div class="banner-content nth-child-3">
-                            {{-- <h5 class="title">Laptop</h5> --}}
-                            {{-- <span class="category">{{$item->price}}</span> --}}
                             <a href="{{route('laptop.show')}}" class="shop-link">Shop Now <i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                         </div>
@@ -22,8 +20,6 @@
                     <div class="single-banner nth-child-2 mb-lm-30px p-5">
                         <img src="{{ asset('users/assets/images/category/monitors.png') }}" alt="">
                         <div class="banner-content nth-child-3">
-                            {{-- <h5 class="title">Display & Desktop</h5> --}}
-                            {{-- <span class="category">{{$item->price}}</span> --}}
                             <a href="{{route('display.show')}}" class="shop-link">Shop Now <i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                         </div>
@@ -33,8 +29,6 @@
                     <div class="single-banner nth-child-2 mb-lm-30px p-5">
                         <img src="{{ asset('users/assets/images/category/components.png') }}" alt="">
                         <div class="banner-content nth-child-3">
-                            {{-- <h5 class="title">Components</h5> --}}
-                            {{-- <span class="category">{{$item->price}}</span> --}}
                             <a href="{{route('components.show')}}" class="shop-link">Shop Now <i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                         </div>
@@ -63,12 +57,9 @@
                         @foreach ($getProduct as $item)
                             <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                 <!-- Single Prodect -->
-                                <div class="product">
-                                    <span class="badges">
-                                        <span class="new">New</span>
-                                    </span>
+                                <div class="card h-100 product">
                                     <div class="thumb">
-                                        <a href="single-product.html" class="image">
+                                        <a class="image text-center">
                                             <img src="{{$item->product_img}}" alt="Product" />
                                             <img class="hover-image" src="{{$item->product_img}}"
                                                 alt="Product" />
@@ -85,197 +76,13 @@
                                         </span>
                                     </div>
                                     <div class="actions">
-
                                         <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                            data-bs-toggle="modal" data-bs-target="#modalProduct"><i
+                                            data-bs-toggle="modal" data-bs-target="#modalProduct{{$item->id}}"><i
                                                 class="pe-7s-look"></i></button>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                    <span class="sale">-10%</span>
-                                    <span class="new">New</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{{ asset('assets/images/product-image/2.webp') }}" alt="Product" />
-                                        <img class="hover-image" src="{{ asset('assets/images/product-image/2.webp') }}"
-                                            alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Bluetooth Headphone
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="old">$48.50</span>
-                                        <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                            class="pe-7s-look"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                    <span class="new">Sale</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{{ asset('assets/images/product-image/3.webp') }}" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/3.webp" alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Music Box
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                            class="pe-7s-look"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                    <span class="new">New</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="{{ asset('assets/images/product-image/4.webp') }}" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/1.webp"
-                                            alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Air Pods 25Hjkl Black
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                            class="pe-7s-look"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/5.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/5.webp"
-                                            alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Hand Watch
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="new">$38.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                            class="pe-7s-look"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                    <span class="sale">-8%</span>
-                                    <span class="new">Sale</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/6.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/6.webp"
-                                            alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Smart Table Camera
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="old">$138.50</span>
-                                        <span class="new">$112.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                            class="pe-7s-look"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px">
-                            <!-- Single Prodect -->
-                            <div class="product">
-                                <span class="badges">
-                                    <span class="sale">-5%</span>
-                                </span>
-                                <div class="thumb">
-                                    <a href="single-product.html" class="image">
-                                        <img src="assets/images/product-image/8.webp" alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/8.webp"
-                                            alt="Product" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <span class="category"><a href="#">Accessories</a></span>
-                                    <h5 class="title"><a href="single-product.html">Power Bank 10000Mhp
-                                        </a>
-                                    </h5>
-                                    <span class="price">
-                                        <span class="old">$260.00</span>
-                                        <span class="new">$238.50</span>
-                                    </span>
-                                </div>
-                                <div class="actions">
-
-                                    <button class="action quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                            class="pe-7s-look"></i></button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -284,8 +91,8 @@
     <!-- Product Area End -->
 
         <!-- Modal -->
-        <div class="modal modal-2 fade" id="modalProduct" tabindex="-1" role="dialog">
-            @foreach ($getProduct as $item)
+        @foreach ($getProduct as $item)
+        <div class="modal modal-2 fade" id="modalProduct{{$item->id}}" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -312,33 +119,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="swiper-container gallery-thumbs mt-20px slider-nav-style-1 small-nav">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{$item->product_img}}" alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{$item->product_img}}" alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{$item->product_img}}" alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{$item->product_img}}" alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{$item->product_img}}" alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{$item->product_img}}" alt="">
-                                        </div>
-                                    </div>
-                                    <!-- Add Arrows -->
-                                    <div class="swiper-buttons">
-                                        <div class="swiper-button-next"></div>
-                                        <div class="swiper-button-prev"></div>
-                                    </div>
-                                </div> --}}
                             </div>
                             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
                                 <div class="product-details-content quickview-content">
@@ -375,6 +155,14 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                        <span>Stok: </span>
+                                        <ul class="d-flex">
+                                            <li>
+                                                <a href="#">{{$item->quantity}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
                                     <div class="pro-details-quality">
                                         <form action="{{url('/user/add-to-cart')}}" method="POST">
@@ -385,7 +173,7 @@
                                             <div class="pro-details-cart">
                                                 <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id">
                                                 <input type="hidden" value="{{$item->price}}" name="price" id="price">
-                                                <input type="hidden" value="1" name="quantity" id="quantity">
+                                                <input type="hidden" value="" name="quantity" id="quantity">
                                                 <button class="add-cart" type="submit"> Add To Cart</button>
                                             </div>
                                         </form>
@@ -400,8 +188,8 @@
                 </div>
             </div>
 
-            @endforeach
         </div>
+        @endforeach
         <!-- Modal end -->
         <!-- Modal Cart -->
         <div class="modal customize-class fade" id="exampleModal-Cart" tabindex="-1" aria-hidden="true">
