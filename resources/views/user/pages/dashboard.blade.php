@@ -165,18 +165,16 @@
                                     </div>
 
                                     <div class="pro-details-quality">
-                                        <form action="{{url('/user/add-to-cart')}}" method="POST">
-                                        @csrf
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" type="number" name="quantity" min="1" placeholder="1" />
-                                            </div>
-                                            <div class="pro-details-cart">
+                                        <div class="pro-details-cart d-flex">
+                                                <form action="{{url('/user/add-to-cart')}}" enctype="multipart/form-data" method="POST">
+                                                @csrf
+                                                @method('post')
+                                                <input class="form-control" type="number" name="quantity" min="1" placeholder="1" />
                                                 <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id">
                                                 <input type="hidden" value="{{$item->price}}" name="price" id="price">
-                                                <input type="hidden" value="" name="quantity" id="quantity">
                                                 <button class="add-cart" type="submit"> Add To Cart</button>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
                                     <div class="payment-img">
                                         <a href="#"><img src="{{asset('users/assets/images/icons/payment.png')}}" alt=""></a>
@@ -192,6 +190,12 @@
         @endforeach
         <!-- Modal end -->
         <!-- Modal Cart -->
+
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{session()->get('success')}}
+            </div>
+        @endif
         <div class="modal customize-class fade" id="exampleModal-Cart" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -210,6 +214,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Modal wishlist -->
         <div class="modal customize-class fade" id="exampleModal-Wishlist" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -33,24 +33,18 @@ class DashboardUserController extends Controller
 
     public function addToCart(Request $request){
         $product_price = $request->price;
-        $quantity = $request->quantity;
-        $price = $product_price * $quantity;
+        $total_quantity = $request->quantity;
+        $total_price = $product_price * $total_quantity;
         try {
-            // $this->param = Cart::insert([
-            //                     'product_id' => $request->id,
-            //                     'user_id' => Auth::id(),
-            //                     'quantity' => $request->quantity,
-            //                     'price' => $price
-            //                 ]);
-            Cart::insert([
+            Order::insert([
                 'product_id' => $request->product_id,
                 'user_id' => Auth::id(),
-                'quantity' => $request->quantity,
-                'price' => $price
+                'total_quantity' => $total_quantity,
+                'total_price' => $total_price,
+                'status' => 'not paid',
             ]);
 
-            // return view('user.pages.cart', $this->param)->with('message', 'Your item successfully added to cart !');
-            return redirect()->route('mycart')->with('message', 'Your item successfully added to cart !');
+            return redirect()->back()->with('message', 'Product successfully added to cart !');
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
