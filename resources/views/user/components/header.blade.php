@@ -21,15 +21,16 @@
                 <div class="col-lg-3 col">
                     <div class="header-actions">
                         <!-- Single Wedge Start -->
-                        <a href="#offcanvas-wishlist" class="header-action-btn offcanvas-toggle">
-                            <i class="pe-7s-like"></i>
+                        <a href="#offcanvas-cart" class="header-action-btn offcanvas-toggle">
+                            <i class="pe-7s-shopbag"></i>
+                            <span class="header-action-num">01</span>
                         </a>
                         <!-- Single Wedge End -->
-                        <a href="{{url('/user/add-to-cart')}}" class="header-action-btn header-action-btn-cart pr-0" type="submit">
+                        {{-- <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart pr-0">
                             <i class="pe-7s-shopbag"></i>
                             <span class="header-action-num">01</span>
                             <!-- <span class="cart-amount">€30.00</span> -->
-                        </a>
+                        </a> --}}
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                               <div class="avatar avatar-online">
@@ -46,8 +47,7 @@
                                       </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                      <span class="fw-semibold d-block">John Doe</span>
-                                      <small class="text-muted">Admin</small>
+                                      <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
                                     </div>
                                   </div>
                                 </a>
