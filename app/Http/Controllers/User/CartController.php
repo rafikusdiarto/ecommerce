@@ -18,7 +18,10 @@ class CartController extends Controller
                                         ['status', '=', 'add to cart'],
                                         ['user_id', '=', Auth::user()->id]
                                     ])->count();
-
+        $this->param['countPrice'] = Order::where([
+                                        ['status', '=', 'add to cart'],
+                                        ['user_id', '=', Auth::user()->id]
+                                    ])->sum('total_price');
 
         return view('user.pages.cart', $this->param);
     }

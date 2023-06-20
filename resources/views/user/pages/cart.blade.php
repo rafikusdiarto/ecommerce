@@ -50,7 +50,7 @@
                                     <a href="#">Continue Shopping</a>
                                 </div>
                                 <div class="cart-clear">
-                                    <a>Total Price : </a>
+                                    <a>Total Price : @currency($countPrice)</a>
                                 </div>
                             </div>
                         </div>
