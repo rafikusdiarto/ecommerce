@@ -22,7 +22,10 @@ class DashboardUserController extends Controller
         try {
             $this->param['getProduct'] = Product::all();
             $this->param['getCategory'] = Category::all();
-            $this->param['getOrder'] = Order::where('status', '=', 'add to cart')->get();
+            $this->param['getOrder'] = Order::where([
+                                        ['status', '=', 'add to cart'],
+                                        ['user_id', '=', Auth::user()->id]
+                                    ])->get();
 
             return view('user.pages.dashboard', $this->param);
         } catch (\Exception $e) {
