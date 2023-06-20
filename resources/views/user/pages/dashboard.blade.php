@@ -165,14 +165,21 @@
                                     </div>
 
                                     <div class="pro-details-quality">
-                                        <div class="pro-details-cart d-flex">
-                                                <form action="{{url('/user/add-to-cart')}}" enctype="multipart/form-data" method="POST">
-                                                @csrf
-                                                @method('post')
-                                                <input class="form-control" type="number" name="quantity" min="1" placeholder="1" />
-                                                <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id">
-                                                <input type="hidden" value="{{$item->price}}" name="price" id="price">
-                                                <button class="add-cart" type="submit"> Add To Cart</button>
+                                        <div class="pro-details-cart col-lg d-flex">
+                                            <form action="{{url('/user/add-to-cart')}}" enctype="multipart/form-data" method="POST">
+                                            @csrf
+                                            @method('post')
+                                                <div class="d-flex">
+                                                    <div>
+                                                        <input class="form-control col-sm" type="number" name="quantity" min="1" max="{{$item->quantity}}" oninvalid="this.setCustomValidity('jumlah order harus lebih sama atau kurang dari {{$item->quantity}}')" placeholder="jumlah order"/>
+                                                        <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id">
+                                                        <input type="hidden" value="{{$item->price}}" name="price" id="price">
+
+                                                    </div>
+                                                    <div>
+                                                        <button class="add-cart" type="submit"> Add To Cart</button>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>

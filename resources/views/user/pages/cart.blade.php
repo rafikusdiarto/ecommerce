@@ -50,8 +50,7 @@
                                     <a href="#">Continue Shopping</a>
                                 </div>
                                 <div class="cart-clear">
-                                    <button>Update Shopping Cart</button>
-                                    <a href="#">Clear Shopping Cart</a>
+                                    <a>Total Price : </a>
                                 </div>
                             </div>
                         </div>
@@ -61,4 +60,9 @@
         </div>
     </div>
 </div>
+@if(session("success"))
+<script>
+    Swal.fire("Sukses", `{{ session("success") }}`, "success");
+</script>
+@endif
 @endsection
