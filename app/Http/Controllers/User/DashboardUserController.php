@@ -45,7 +45,7 @@ class DashboardUserController extends Controller
                 'status' => 'add to cart',
             ]);
 
-            return redirect()->back()->with('message', 'Product successfully added to cart !');
+            return redirect()->back()->with('success', 'Product successfully added to cart !');
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
