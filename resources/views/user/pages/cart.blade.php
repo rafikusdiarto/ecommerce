@@ -17,64 +17,29 @@
                                 <tr>
                                     <th>Image</th>
                                     <th>Product Name</th>
-                                    <th>Until Price</th>
-                                    <th>Qty</th>
-                                    <th>Subtotal</th>
+                                    <th>Price</th>
+                                    <th>Total Order</th>
+                                    <th>Total Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="{{asset('users/assets/images/product-image/1.webp')}}" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Modern Smart Phone</a></td>
-                                    <td class="product-price-cart"><span class="amount">$60.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$70.00</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="{{asset('users/assets/images/product-image/2.webp')}}" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Bluetooth Headphone</a></td>
-                                    <td class="product-price-cart"><span class="amount">$50.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$80.00</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img class="img-responsive ml-15px" src="{{asset('users/assets/images/product-image/3.webp')}}" alt="" /></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Smart Music Box</a></td>
-                                    <td class="product-price-cart"><span class="amount">$70.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$90.00</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($getOrder as $item)
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img class="img-responsive ml-15px" src="{{asset($item->product->product_img)}}" alt="" /></a>
+                                        </td>
+                                        <td class="product-name"><a href="#">{{$item->product->product_name}}</a></td>
+                                        <td class="product-price-cart"><span class="amount">@currency($item->product->price)</span></td>
+                                        <td class="product-quantity">
+                                            <span>{{$item->total_quantity}}</span>
+                                        </td>
+                                        <td class="product-subtotal">@currency($item->total_price)</td>
+                                        <td class="product-remove">
+                                            <a  href="{{route('removecart', $item->id)}}" onclick="confirm('yakin menghapus dari keranjang ?')"><i class="fa fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
