@@ -22,6 +22,7 @@ class DashboardUserController extends Controller
         try {
             $this->param['getProduct'] = Product::all();
             $this->param['getCategory'] = Category::all();
+            $this->param['getOrder'] = Order::where('status', '=', 'add to cart')->get();
 
             return view('user.pages.dashboard', $this->param);
         } catch (\Exception $e) {
@@ -41,7 +42,7 @@ class DashboardUserController extends Controller
                 'user_id' => Auth::id(),
                 'total_quantity' => $total_quantity,
                 'total_price' => $total_price,
-                'status' => 'not paid',
+                'status' => 'add to cart',
             ]);
 
             return redirect()->back()->with('message', 'Product successfully added to cart !');

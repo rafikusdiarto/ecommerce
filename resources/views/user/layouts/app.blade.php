@@ -74,6 +74,7 @@
                 </div>
             </div>
         </div>
+
         <!-- OffCanvas Wishlist End -->
         <!-- OffCanvas Cart Start -->
         <div id="offcanvas-cart" class="offcanvas offcanvas-cart">
@@ -84,30 +85,16 @@
                 </div>
                 <div class="body customScroll">
                     <ul class="minicart-product-list">
-                        <li>
-                            <a href="single-product.html" class="image"><img src="{{asset('users/assets/images/product-image/1.webp')}}" alt="Cart product Image"></a>
-                            <div class="content">
-                                <a href="single-product.html" class="title">Modern Smart Phone</a>
-                                <span class="quantity-price">1 x <span class="amount">$18.86</span></span>
-                                <a href="#" class="remove">×</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="single-product.html" class="image"><img src="{{asset('users/assets/images/product-image/2.webp')}}" alt="Cart product Image"></a>
-                            <div class="content">
-                                <a href="single-product.html" class="title">Bluetooth Headphone</a>
-                                <span class="quantity-price">1 x <span class="amount">$43.28</span></span>
-                                <a href="#" class="remove">×</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="single-product.html" class="image"><img src="{{asset('users/assets/images/product-image/3.webp')}}" alt="Cart product Image"></a>
-                            <div class="content">
-                                <a href="single-product.html" class="title">Smart Music Box</a>
-                                <span class="quantity-price">1 x <span class="amount">$37.34</span></span>
-                                <a href="#" class="remove">×</a>
-                            </div>
-                        </li>
+                        @foreach ($getOrder as $item)
+                            <li>
+                                <a href="single-product.html" class="image"><img src="{{asset($item->product->product_img)}}" alt="Cart product Image"></a>
+                                <div class="content">
+                                    <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
+                                    <span class="quantity-price">{{$item->total_quantity}} x <span class="amount">@currency($item->product->price)</span></span>
+                                    <a href="#" class="remove">×</a>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="foot">
