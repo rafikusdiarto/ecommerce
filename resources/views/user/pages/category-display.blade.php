@@ -50,10 +50,7 @@
                                         @foreach ($getCategory as $item)
                                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
                                             <!-- Single Prodect -->
-                                            <div class="product">
-                                                <span class="badges">
-                                                <span class="new">New</span>
-                                                </span>
+                                            <div class="product h-100">
                                                 <div class="thumb">
                                                     <a href="single-product.html" class="image">
                                                         <img src="{{asset($item->product_img)}}" alt="Product" />

@@ -23,7 +23,7 @@
                         <!-- Single Wedge Start -->
                         <a href="#offcanvas-cart" class="header-action-btn offcanvas-toggle">
                             <i class="pe-7s-shopbag"></i>
-                            <span class="header-action-num">01</span>
+                            <span class="header-action-num">{{$countOrder}}</span>
                         </a>
                         <!-- Single Wedge End -->
                         {{-- <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart pr-0">

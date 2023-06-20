@@ -11,9 +11,14 @@ class CartController extends Controller
 {
     public function index(){
         $this->param['getOrder'] = Order::where([
-                                    ['status', '=', 'add to cart'],
-                                    ['user_id', '=', Auth::user()->id]
-                                ])->get();
+                                        ['status', '=', 'add to cart'],
+                                        ['user_id', '=', Auth::user()->id]
+                                    ])->get();
+        $this->param['countOrder'] = Order::where([
+                                        ['status', '=', 'add to cart'],
+                                        ['user_id', '=', Auth::user()->id]
+                                    ])->count();
+
 
         return view('user.pages.cart', $this->param);
     }
