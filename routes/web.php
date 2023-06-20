@@ -83,5 +83,6 @@ Route::get('/user/about', [AboutController::class, 'index']);
 Route::get('/user/contact', [ContactController::class, 'index']);
 Route::get('/user/my-cart', [CartController::class, 'index'])->name('mycart');
 Route::post('/user/add-to-cart', [DashboardUserController::class, 'addToCart'])->name('addproductcart');
+Route::get('/user/remove-cart/{id}', [DashboardUserController::class, 'removeCart'])->name('removecart');
 
 require __DIR__.'/auth.php';

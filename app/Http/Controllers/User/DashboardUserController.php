@@ -52,6 +52,17 @@ class DashboardUserController extends Controller
             return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
     }
+
+    public function removeCart($id){
+        try {
+            Order::findOrFail($id)->delete();
+            return redirect()->back()->with('success', 'Product successfully delete from cart !');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
 }
 
 
