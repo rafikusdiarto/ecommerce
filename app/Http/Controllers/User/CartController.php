@@ -25,4 +25,20 @@ class CartController extends Controller
 
         return view('user.pages.cart', $this->param);
     }
+
+    public function checkoutOrder(Request $request)
+    {
+        $allOrder = Order::where('status', 'add to cart')->get();
+        try {
+            foreach ($allOrder as $data){
+                $data->status = 'not paid';
+                $data->update();
+			}
+            return redirect()->back()->with('success', 'Product successfully checkout from cart !');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
 }

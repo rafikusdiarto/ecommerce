@@ -8,9 +8,16 @@
 <div class="cart-main-area pt-100px pb-100px">
     <div class="container">
         <h3 class="cart-page-title">Your cart items</h3>
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            semua order sedang diproses
+        </div>
+        @endif
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <form action="#">
+                <form action="{{url('/user/checkout-order')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('post')
                     <div class="table-content table-responsive cart-table-content">
                         <table>
                             <thead>
@@ -38,6 +45,9 @@
                                         <td class="product-remove">
                                             <a  href="{{route('removecart', $item->id)}}" onclick="confirm('yakin menghapus dari keranjang ?')"><i class="fa fa-trash"></i></a>
                                         </td>
+                                        <div>
+                                            <input type="hidden" value="{{$item->id}}" name="id">
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -47,7 +57,7 @@
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
                                 <div class="cart-shiping-update">
-                                    <a href="#">Continue Shopping</a>
+                                    <button type="submit" onclick="confirm('yakin checkout?')" class="btn btn-primary text-black">Continue Shopping</button>
                                 </div>
                                 <div class="cart-clear">
                                     <a>Total Price : @currency($countPrice)</a>
