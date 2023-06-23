@@ -17,7 +17,7 @@ Pending Order | Rawon E-Commerce
             <thead>
               <tr>
                 <th>NO</th>
-                <th>User Name</th>
+                <th>Customer Name</th>
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Total Quantity</th>
@@ -43,6 +43,9 @@ Pending Order | Rawon E-Commerce
                                     @csrf
                                     @method('put')
                                     <input type="hidden" name="id" value="{{$item->id}}">
+                                    <input type="hidden" name="product_id" value="{{$item->product_id}}">
+                                    <input type="hidden" name="quantity" value="{{$item->product->quantity}}">
+                                    <input type="hidden" name="total_quantity" value="{{$item->total_quantity}}">
                                     <button class="btn btn-info text-white me-2" type="submit" onclick="confirm('apakah anda yakin acc order')">Accept</button>
                                 </form>
                                 <form action="{{url('/admin/pending-order/reject/'.$item->id.'')}}" method="POST" enctype="multipart/form-data">
@@ -67,12 +70,12 @@ Pending Order | Rawon E-Commerce
             <thead>
               <tr>
                 <th>NO</th>
-                <th>User Name</th>
+                <th>Customer Name</th>
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Total Quantity</th>
                 <th>Total Price</th>
-                <th>Actions</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">

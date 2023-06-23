@@ -38,24 +38,39 @@ class DashboardUserController extends Controller
         }
     }
 
-    public function addToCart(Request $request){
-        $product_price = $request->price;
-        $total_quantity = $request->quantity;
-        $total_price = $product_price * $total_quantity;
+    public function addToCart(Request $request, $id){
+
         try {
-            Order::insert([
-                'product_id' => $request->product_id,
-                'user_id' => Auth::id(),
-                'total_quantity' => $total_quantity,
+            $product = Product::find($id);
+            if($product->quantity < $request->jumlah_order){
+                return redirect()->back()->with('failed', 'Failed order product !');
+            }
+
+            $product_price = $product->price;
+            $jumlah_order = $request->jumlah_order;
+            $total_price = $product_price * $jumlah_order;
+            $jumlah_cart_item = $jumlah_order + $product->quantity;
+
+            $order = Order::updateOrCreate([
+                'product_id' =>$id,
+                'user_id' => Auth::user()->id,
+                'total_quantity' => $jumlah_order,
                 'total_price' => $total_price,
                 'status' => 'add to cart',
             ]);
 
+            if(!$order->wasRecentlyCreated){
+                $order->total_quantity += $jumlah_order;
+                $order->total_price += $total_price;
+                $order->save();
+                return redirect()->back()->with('success', 'Product successfully added to cart !');
+            }
+
             return redirect()->back()->with('success', 'Product successfully added to cart !');
         } catch (\Exception $e) {
-            return redirect()->back()->withError($e->getMessage());
+            return redirect()->back()->with('failed', $e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+            return redirect()->back()->with('failed', $e->getMessage());
         }
     }
 

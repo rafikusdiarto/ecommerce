@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,9 +28,15 @@ class OrderController extends Controller
 
     public function accOrder(Request $request, $id)
     {
+        $order = Order::find($id);
+        $product = Product::find($order->product_id);
         try {
-            Order::find($id)->where('id',$id)->update([
+            $order->where('id', $id)->update([
                 'status' => 'paid',
+            ]);
+            $order->save();
+            $product->update([
+                'quantity' => $product->quantity -= $request->total_quantity
             ]);
             return redirect()->back()->with('success', 'Order successfully accept !');
         } catch (\Exception $e) {

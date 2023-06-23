@@ -166,15 +166,14 @@
 
                                     <div class="pro-details-quality">
                                         <div class="pro-details-cart col-lg d-flex">
-                                            <form action="{{url('/user/add-to-cart')}}" enctype="multipart/form-data" method="POST">
+                                            <form action="{{url('/user/add-to-cart/'.$item->id.'')}}" enctype="multipart/form-data" method="POST">
                                             @csrf
                                             @method('post')
                                                 <div class="d-flex">
                                                     <div>
-                                                        <input class="form-control col-sm" type="number" name="quantity" min="1" max="{{$item->quantity}}" oninvalid="this.setCustomValidity('jumlah order harus lebih sama atau kurang dari {{$item->quantity}}')" placeholder="jumlah order"/>
-                                                        <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id">
-                                                        <input type="hidden" value="{{$item->price}}" name="price" id="price">
-
+                                                        <input class="form-control col-sm" type="number" name="jumlah_order" min="1" placeholder="jumlah order"/>
+                                                        {{-- <input type="hidden" value="{{$item->quantity}}" name="quantity" >
+                                                        <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id"> --}}
                                                     </div>
                                                     <div>
                                                         <button class="add-cart" type="submit"> Add To Cart</button>
@@ -201,6 +200,11 @@
         @if(session("success"))
         <script>
             Swal.fire("Sukses", `{{ session("success") }}`, "success");
+        </script>
+        @endif
+        @if(session("failed"))
+        <script>
+            Swal.fire("Reject", `{{ session("failed") }}`, "error");
         </script>
         @endif
 
