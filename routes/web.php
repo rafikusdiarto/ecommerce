@@ -68,6 +68,8 @@ Route::controller(ProductController::class) -> group(function(){
 
 Route::controller(OrderController::class) -> group(function(){
     Route::get('/admin/pending-order', 'Index')->name('pendingorder');
+    Route::put('/admin/pending-order/acc/{id}', 'accOrder')->name('accorder');
+    Route::put('/admin/pending-order/reject/{id}', 'rejectOrder')->name('rejectorder');
 });
 
 

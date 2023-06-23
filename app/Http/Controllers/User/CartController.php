@@ -10,20 +10,25 @@ use Illuminate\Support\Facades\Auth;
 class CartController extends Controller
 {
     public function index(){
-        $this->param['getOrder'] = Order::where([
-                                        ['status', '=', 'add to cart'],
-                                        ['user_id', '=', Auth::user()->id]
-                                    ])->get();
-        $this->param['countOrder'] = Order::where([
-                                        ['status', '=', 'add to cart'],
-                                        ['user_id', '=', Auth::user()->id]
-                                    ])->count();
-        $this->param['countPrice'] = Order::where([
-                                        ['status', '=', 'add to cart'],
-                                        ['user_id', '=', Auth::user()->id]
-                                    ])->sum('total_price');
-
-        return view('user.pages.cart', $this->param);
+        try {
+            $this->param['getOrder'] = Order::where([
+                                            ['status', '=', 'add to cart'],
+                                            ['user_id', '=', Auth::user()->id]
+                                        ])->get();
+            $this->param['countOrder'] = Order::where([
+                                            ['status', '=', 'add to cart'],
+                                            ['user_id', '=', Auth::user()->id]
+                                        ])->count();
+            $this->param['countPrice'] = Order::where([
+                                            ['status', '=', 'add to cart'],
+                                            ['user_id', '=', Auth::user()->id]
+                                        ])->sum('total_price');
+            return view('user.pages.cart', $this->param);
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
     public function checkoutOrder(Request $request)

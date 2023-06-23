@@ -46,6 +46,9 @@
     <!-- Helpers -->
     <script src="{{asset('dashboard/assets/vendor/js/helpers.js')}}"></script>
     <script src="{{asset('dashboard/assets/js/config.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
   </head>
 
   <body>
@@ -77,7 +80,7 @@
     <!-- / Layout wrapper -->
 
 
-    
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{asset('dashboard/assets/vendor/libs/jquery/jquery.js')}}"></script>
