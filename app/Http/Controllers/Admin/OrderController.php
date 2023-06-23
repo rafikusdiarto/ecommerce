@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
+    private $param;
+    public function __construct(){
+        $this->middleware(['role:admin']);
+    }
     public function Index(){
         $this->param['getOrder'] = Order::where([
                                     ['status', '=', 'not paid'],
