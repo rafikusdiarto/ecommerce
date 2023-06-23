@@ -17,6 +17,7 @@ Pending Order | Rawon E-Commerce
             <thead>
               <tr>
                 <th>NO</th>
+                <th>User Name</th>
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Total Quantity</th>
@@ -29,6 +30,7 @@ Pending Order | Rawon E-Commerce
                 @foreach ($getOrder as $item)
                     <tr>
                         <td>{{$no++}}</td>
+                        <td>{{$item->user->name}}</td>
                         <td>{{$item->product->product_name}}</td>
                         <td>
                             <img style="width: 50px;height:50px" src="{{asset($item->product->product_img)}}" alt="">
@@ -65,6 +67,7 @@ Pending Order | Rawon E-Commerce
             <thead>
               <tr>
                 <th>NO</th>
+                <th>User Name</th>
                 <th>Product Name</th>
                 <th>Image</th>
                 <th>Total Quantity</th>
@@ -77,6 +80,7 @@ Pending Order | Rawon E-Commerce
                 @foreach ($getOrderAcc as $item)
                     <tr>
                         <td>{{$no++}}</td>
+                        <td>{{$item->user->name}}</td>
                         <td>{{$item->product->product_name}}</td>
                         <td>
                             <img style="width: 50px;height:50px" src="{{asset($item->product->product_img)}}" alt="">
@@ -86,8 +90,8 @@ Pending Order | Rawon E-Commerce
                         <td>
                             @if ($item->status == 'paid')
                                 <button class="btn btn-success text-white me-2" type="submit" disabled>Order Accepted</button>
-                            @else
-                                <button class="btn btn-warning text-white me-2" type="submit" disabled>Order Pending</button>
+                            @elseif ($item->status == 'reject')
+                                <button class="btn btn-danger text-white me-2" type="submit" disabled>Order Reject</button>
                             @endif
                         </td>
                     </tr>

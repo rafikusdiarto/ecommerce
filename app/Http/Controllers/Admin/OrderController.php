@@ -12,9 +12,9 @@ class OrderController extends Controller
         $this->param['getOrder'] = Order::where([
                                     ['status', '=', 'not paid'],
                                     ])->get();
-        $this->param['getOrderAcc'] = Order::where([
-                                    ['status', '=', 'paid'],
-                                    ])->get();
+        $this->param['getOrderAcc'] = Order::where('status','=','paid')
+                                    ->orWhere('status','=','reject')
+                                    ->get();
         $this->param['countOrder'] = Order::where([
                                     ['status', '=', 'not paid'],
                                     ])->count();
@@ -43,7 +43,7 @@ class OrderController extends Controller
     {
         try {
             Order::find($id)->where('id',$id)->update([
-                'status' => 'not paid',
+                'status' => 'reject',
             ]);
             return redirect()->back()->with('failed', 'Order not accept !');
         } catch (\Exception $e) {
