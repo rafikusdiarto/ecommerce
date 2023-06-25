@@ -20,6 +20,7 @@ class CategoryUserController extends Controller
     public function laptop(){
         try {
             $this->param ['getCategory'] = Product::where('product_category_id',  '=', 1)->get();
+            $this->param ['countCategory'] = Product::where('product_category_id',  '=', 1)->count();
             $this->param['getOrder'] = Order::where([
                                             ['status', '=', 'add to cart'],
                                             ['user_id', '=', Auth::user()->id]
@@ -39,6 +40,7 @@ class CategoryUserController extends Controller
     public function display(){
         try {
             $this->param ['getCategory'] = Product::where('product_category_id', '=', 2)->get();
+            $this->param ['countCategory'] = Product::where('product_category_id',  '=', 2)->count();
             $this->param['getOrder'] = Order::where([
                                             ['status', '=', 'add to cart'],
                                             ['user_id', '=', Auth::user()->id]
@@ -58,6 +60,7 @@ class CategoryUserController extends Controller
     public function components(){
         try {
             $this->param ['getCategory'] = Product::where('product_category_id', '=', 3)->get();
+            $this->param ['countCategory'] = Product::where('product_category_id',  '=', 3)->count();
             $this->param['getOrder'] = Order::where([
                                             ['status', '=', 'add to cart'],
                                             ['user_id', '=', Auth::user()->id]

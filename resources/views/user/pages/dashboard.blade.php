@@ -172,8 +172,7 @@
                                                 <div class="d-flex">
                                                     <div>
                                                         <input class="form-control col-sm" type="number" name="jumlah_order" min="1" placeholder="jumlah order"/>
-                                                        {{-- <input type="hidden" value="{{$item->quantity}}" name="quantity" >
-                                                        <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id"> --}}
+                                                        {{-- <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id"> --}}
                                                     </div>
                                                     <div>
                                                         <button class="add-cart" type="submit"> Add To Cart</button>
