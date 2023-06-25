@@ -38,11 +38,14 @@ class DashboardUserController extends Controller
         }
     }
 
+
     public function addToCart(Request $request, $id){
 
         try {
             $product = Product::find($id);
             if($product->quantity < $request->jumlah_order){
+                return redirect()->back()->with('failed', 'Failed order product !');
+            }elseif ($request->jumlah_order < 1) {
                 return redirect()->back()->with('failed', 'Failed order product !');
             }
 
@@ -59,15 +62,14 @@ class DashboardUserController extends Controller
                 'status' => 'add to cart',
             ]);
 
-            if(!$order->wasRecentlyCreated){
+            if($order->wasRecentlyCreated){
+                return redirect()->back()->with('success', 'Product successfully added to cart !');
+            }else {
                 $order->total_quantity += $jumlah_order;
                 $order->total_price += $total_price;
                 $order->save();
                 return redirect()->back()->with('success', 'Product successfully added to cart !');
             }
-
-
-            return redirect()->back()->with('success', 'Product successfully added to cart !');
         } catch (\Exception $e) {
             return redirect()->back()->with('failed', $e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
