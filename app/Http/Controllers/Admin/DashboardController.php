@@ -54,10 +54,11 @@ class DashboardController extends Controller
 
             $this->param['countAllIncome'] = Order::where('status', '=', 'paid')->sum('total_price');
             $this->param['countAllProductSold'] = Order::where('status', '=', 'paid')->sum('total_quantity');
-
             $this->param['countOrders'] = Order::count();
             $this->param['countAccOrders'] = Order::where('status', 'paid')->count();
             $this->param['countRejectOrders'] = Order::where('status', 'reject')->count();
+            $this->param['getPendingOrders'] = Order::where('status', '=', 'not paid')->count();
+
             return view('admin.pages.dashboard', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());

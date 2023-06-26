@@ -265,6 +265,37 @@
               </div>
             </div>
           </div>
+          <div class="col-6 mb-4">
+            <div class="card {{$getPendingOrders > 0 ? 'bg-warning text-white' : 'bg-white'}}">
+              <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                  <div class="avatar flex-shrink-0">
+                    <img src="{{asset('dashboard/assets/img/icons/unicons/chart.png')}}" alt="Credit Card" class="rounded" />
+                  </div>
+                  <div class="dropdown">
+                    <button
+                      class="btn p-0"
+                      type="button"
+                      id="cardOpt1"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="cardOpt1">
+                      <a class="dropdown-item" href="{{url('/admin/pending-order')}}">View More</a>
+                    </div>
+                  </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Waiting Orders</span>
+                <div class="d-flex">
+                    <h3 class="card-title mb-2">{{$getPendingOrders}}</h3>
+                    <small class="mt-1 ms-2 fw-semibold">Orders</small>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="col-12 mb-4">
             <div class="card">
               <div class="card-body">
@@ -422,27 +453,6 @@
         chart.render()
 </script>
 <script>
-    function number_format(number, decimals, dec_point, thousands_sep) {
-    number = (number + '').replace(',', '').replace(' ', '');
-    var n = !isFinite(+number) ? 0 : +number,
-        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-        s = '',
-        toFixedFix = function(n, prec) {
-        var k = Math.pow(10, prec);
-        return '' + Math.round(n * k) / k;
-        };
-    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-    if (s[0].length > 3) {
-        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-    }
-    if ((s[1] || '').length < prec) {
-        s[1] = s[1] || '';
-        s[1] += new Array(prec - s[1].length + 1).join('0');
-    }
-    return s.join(dec);
-    }
     var options = {
           series: [{
           name: 'Product Sold',
