@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="mt-4">
-                    <img src="{{asset('images/logo-dark.png')}}" alt="" height="24">
+                    <img src="{{asset('users/images/logo-dark.png')}}" alt="" height="24">
                     <p class="text-muted mt-3 pt-1">In an ideal world this text wouldn’t exist, a client would
                         acknowledge
                         the importance of having web copy before the design starts.</p>
@@ -68,22 +68,22 @@
         <div class="row mt-3">
             <div class="col-lg-3">
                 <div class="client-images mt-4">
-                    <img src="{{asset('users/assets/images/clients/1.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
+                    <img src="{{asset('users/assets/images/partner/1.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="client-images mt-4">
-                    <img src="{{asset('users/assets/images/clients/2.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
+                    <img src="{{asset('users/assets/images/partner/2.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
                 </div>
             </div>
             <div class="col-lg-3 ">
                 <div class="client-images mt-4">
-                    <img src="{{asset('users/assets/images/clients/3.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
+                    <img src="{{asset('users/assets/images/partner/3.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="client-images mt-4">
-                    <img src="{{asset('users/assets/images/clients/4.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
+                    <img src="{{asset('users/assets/images/partner/4.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
         <div class="row mt-4">
             <div class="col-lg-12">
                 <p class="text-center text-muted mb-0">
-                    2021 © Destrin. Design by Themesdesign
+                    2022 © R.Mart
                 </p>
 
             </div>
