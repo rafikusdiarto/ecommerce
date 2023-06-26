@@ -47,22 +47,6 @@
                       class="rounded"
                     /> --}}
                   </div>
-                  <div class="dropdown">
-                    <button
-                      class="btn p-0"
-                      type="button"
-                      id="cardOpt3"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                    </div>
-                  </div>
                 </div>
                 <span class="fw-semibold d-block mb-1">Total Customer</span>
                 <h3 class="card-title mb-2">{{$countUser}}</h3>
@@ -88,8 +72,7 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      <a class="dropdown-item" href="{{url('/admin/all-product')}}">View More</a>
                     </div>
                   </div>
                 </div>
@@ -102,6 +85,7 @@
       </div>
       <!-- Total Income -->
       <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+        {{-- grafik income --}}
         <div class="card">
             <div class="card-header">
               <ul class="nav nav-pills" role="tablist">
@@ -141,7 +125,52 @@
                 </div>
               </div>
             </div>
-          </div>
+        </div>
+        {{-- grafik income --}}
+
+
+        {{-- grafik product sold --}}
+        <div class="card my-5">
+            <div class="card-header">
+              <ul class="nav nav-pills" role="tablist">
+                <li class="nav-item">
+                  <button
+                    class="nav-link text-white shadow bg-info"
+                    role="tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#navs-tabs-line-card-income"
+                    aria-controls="navs-tabs-line-card-income"
+                    aria-selected="true"
+                  >
+                  Grafik Product Sold
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body px-0">
+              <div class="tab-content p-0">
+                <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
+                  <div class="d-flex p-4 pt-3">
+                    <div class="avatar flex-shrink-0 me-3">
+                      <img src="{{asset('dashboard/assets/img/icons/unicons/chart-success.png')}}" alt="User" />
+                    </div>
+                    <div>
+                      <small class="text-muted d-block">Total Product Sold</small>
+                      <div class="d-flex align-items-center">
+                        <h6 class="mb-0 me-1">{{$countAllProductSold}}</h6>
+                      </div>
+                    </div>
+                  </div>
+                  {{-- income cart --}}
+                  <div id="incomeChartNew2">
+                  </div>
+                  {{-- income cart --}}
+                </div>
+              </div>
+            </div>
+        </div>
+        {{-- grafik product sold --}}
+
       </div>
       <!--/ Total Income -->
       <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
@@ -151,7 +180,7 @@
               <div class="card-body">
                 <div class="card-title d-flex align-items-start justify-content-between">
                   <div class="avatar flex-shrink-0">
-                    <img src="{{asset('dashboard/assets/img/icons/unicons/paypal.png')}}" alt="Credit Card" class="rounded" />
+                    <img src="{{asset('dashboard/assets/img/icons/unicons/wallet-info.png')}}" alt="Credit Card" class="rounded" />
                   </div>
                   <div class="dropdown">
                     <button
@@ -165,14 +194,12 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      <a class="dropdown-item" href="{{url('/admin/pending-order')}}">View More</a>
                     </div>
                   </div>
                 </div>
-                <span class="d-block mb-1">Order Rejected</span>
-                <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                <span class="d-block mb-1">Total Orders</span>
+                <h3 class="card-title text-nowrap mb-2">{{$countOrders}}</h3>
               </div>
             </div>
           </div>
@@ -195,14 +222,15 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      <a class="dropdown-item" href="{{url('/admin/pending-order')}}">View More</a>
                     </div>
                   </div>
                 </div>
                 <span class="d-block mb-1">Order Rejected</span>
-                <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                <div class="d-flex">
+                    <h3 class="card-title text-nowrap mb-2">{{$countRejectOrders}}</h3>
+                    <small class="text-danger mt-1 ms-2 fw-semibold">Orders</small>
+                </div>
               </div>
             </div>
           </div>
@@ -225,14 +253,15 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                      <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      <a class="dropdown-item" href="{{url('/admin/pending-order')}}">View More</a>
                     </div>
                   </div>
                 </div>
                 <span class="fw-semibold d-block mb-1">Order Accepted</span>
-                <h3 class="card-title mb-2">$14,857</h3>
-                <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
+                <div class="d-flex">
+                    <h3 class="card-title mb-2">{{$countAccOrders}}</h3>
+                    <small class="text-success mt-1 ms-2 fw-semibold">Orders</small>
+                </div>
               </div>
             </div>
           </div>
@@ -267,30 +296,12 @@
           <div class="card-header d-flex align-items-center justify-content-between pb-0">
             <div class="card-title mb-0">
               <h5 class="m-0 me-2">Order Statistics</h5>
-              <small class="text-muted">42.82k Total Sales</small>
-            </div>
-            <div class="dropdown">
-              <button
-                class="btn p-0"
-                type="button"
-                id="orederStatistics"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="bx bx-dots-vertical-rounded"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                <a class="dropdown-item" href="javascript:void(0);">Share</a>
-              </div>
             </div>
           </div>
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div class="d-flex flex-column align-items-center gap-1">
-                <h2 class="mb-2">8,258</h2>
+                <h2 class="mb-2">{{$countOrders}}</h2>
                 <span>Total Orders</span>
               </div>
               <div id="orderStatisticsChart"></div>
@@ -304,8 +315,8 @@
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Electronic</h6>
-                    <small class="text-muted">Mobile, Earbuds, TV</small>
+                    <h6 class="mb-0">Laptops</h6>
+                    <small class="text-muted">ROG Gaming, TUF Gaming</small>
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">82.5k</small>
@@ -318,8 +329,8 @@
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Fashion</h6>
-                    <small class="text-muted">T-shirt, Jeans, Shoes</small>
+                    <h6 class="mb-0">Display & Desktop</h6>
+                    <small class="text-muted">Monitors</small>
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">23.8k</small>
@@ -332,27 +343,11 @@
                 </div>
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
-                    <h6 class="mb-0">Decor</h6>
-                    <small class="text-muted">Fine Art, Dining</small>
+                    <h6 class="mb-0">Components</h6>
+                    <small class="text-muted">Keyboard, Mouse, Graphics Card</small>
                   </div>
                   <div class="user-progress">
                     <small class="fw-semibold">849k</small>
-                  </div>
-                </div>
-              </li>
-              <li class="d-flex">
-                <div class="avatar flex-shrink-0 me-3">
-                  <span class="avatar-initial rounded bg-label-secondary"
-                    ><i class="bx bx-football"></i
-                  ></span>
-                </div>
-                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                  <div class="me-2">
-                    <h6 class="mb-0">Sports</h6>
-                    <small class="text-muted">Football, Cricket Kit</small>
-                  </div>
-                  <div class="user-progress">
-                    <small class="fw-semibold">99</small>
                   </div>
                 </div>
               </li>
@@ -424,6 +419,59 @@
         };
 
         var chart = new ApexCharts(document.querySelector("#incomeChartNew"), options);
+        chart.render()
+</script>
+<script>
+    function number_format(number, decimals, dec_point, thousands_sep) {
+    number = (number + '').replace(',', '').replace(' ', '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function(n, prec) {
+        var k = Math.pow(10, prec);
+        return '' + Math.round(n * k) / k;
+        };
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+    }
+    var options = {
+          series: [{
+          name: 'Product Sold',
+          data: [{{$getSellingJanuary}}, {{$getSellingFebruary}}, {{$getSellingMarch}}, {{$getSellingApril}}, {{$getSellingMay}}, {{$getSellingJune}}, {{$getSellingJuly}}, {{$getSellingAugust}}, {{$getSellingSeptember}}, {{$getSellingOctober}}, {{$getSellingNovember}}, {{$getSellingDecember}}]
+        },],
+          chart: {
+          height: 350,
+          type: 'area'
+        },
+        colors: ['#00E396'],
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        yaxis: {
+            labels: {
+                formatter: function (value, index, values) {
+                return value;
+                }
+            },
+        },
+        xaxis: {
+          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#incomeChartNew2"), options);
         chart.render()
 </script>
 @endsection

@@ -38,7 +38,26 @@ class DashboardController extends Controller
             $this->param['getIncomeOctober'] = Order::whereMonth('updated_at', '10')->where('status', '=','paid')->sum('total_price');
             $this->param['getIncomeNovember'] = Order::whereMonth('updated_at', '11')->where('status', '=','paid')->sum('total_price');
             $this->param['getIncomeDecember'] = Order::whereMonth('updated_at', '12')->where('status', '=','paid')->sum('total_price');
+
+            $this->param['getSellingJanuary'] = Order::whereMonth('updated_at', '01')->where('status', '=', 'paid')->sum('total_quantity');
+            $this->param['getSellingFebruary'] = Order::whereMonth('updated_at', '02')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingMarch'] = Order::whereMonth('updated_at', '03')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingApril'] = Order::whereMonth('updated_at', '04')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingMay'] = Order::whereMonth('updated_at', '05')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingJune'] = Order::whereMonth('updated_at', '06')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingJuly'] = Order::whereMonth('updated_at', '07')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingAugust'] = Order::whereMonth('updated_at', '08')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingSeptember'] = Order::whereMonth('updated_at', '09')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingOctober'] = Order::whereMonth('updated_at', '10')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingNovember'] = Order::whereMonth('updated_at', '11')->where('status', '=','paid')->sum('total_quantity');
+            $this->param['getSellingDecember'] = Order::whereMonth('updated_at', '12')->where('status', '=','paid')->sum('total_quantity');
+
             $this->param['countAllIncome'] = Order::where('status', '=', 'paid')->sum('total_price');
+            $this->param['countAllProductSold'] = Order::where('status', '=', 'paid')->sum('total_quantity');
+
+            $this->param['countOrders'] = Order::count();
+            $this->param['countAccOrders'] = Order::where('status', 'paid')->count();
+            $this->param['countRejectOrders'] = Order::where('status', 'reject')->count();
             return view('admin.pages.dashboard', $this->param);
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
