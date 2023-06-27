@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +19,6 @@ class DashboardController extends Controller
 
     public function index(){
         try {
-
             $countUser = User::whereHas('roles', function($thisRole){
                 $thisRole->where('name', 'user');
             })->count();
@@ -51,6 +51,16 @@ class DashboardController extends Controller
             $this->param['getSellingOctober'] = Order::whereMonth('updated_at', '10')->where('status', '=','paid')->sum('total_quantity');
             $this->param['getSellingNovember'] = Order::whereMonth('updated_at', '11')->where('status', '=','paid')->sum('total_quantity');
             $this->param['getSellingDecember'] = Order::whereMonth('updated_at', '12')->where('status', '=','paid')->sum('total_quantity');
+
+            $this->param['getOrderLaptops'] = Order::whereHas('product', function($query){
+                $query->where('product_category_id', 1);
+            })->count();
+            $this->param['getOrderDisplays'] = Order::whereHas('product', function($query){
+                $query->where('product_category_id', 2);
+            })->count();
+            $this->param['getOrderComponents'] = Order::whereHas('product', function($query){
+                $query->where('product_category_id', 3  );
+            })->count();
 
             $this->param['countAllIncome'] = Order::where('status', '=', 'paid')->sum('total_price');
             $this->param['countAllProductSold'] = Order::where('status', '=', 'paid')->sum('total_quantity');

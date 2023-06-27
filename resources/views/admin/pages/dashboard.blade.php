@@ -335,7 +335,12 @@
                 <h2 class="mb-2">{{$countOrders}}</h2>
                 <span>Total Orders</span>
               </div>
-              <div id="orderStatisticsChart"></div>
+              {{-- order category chart --}}
+              <div id="orderStatisticsChartNew">
+
+              </div>
+                {{-- order category chart --}}
+
             </div>
             <ul class="p-0 m-0">
               <li class="d-flex mb-4 pb-1">
@@ -350,7 +355,7 @@
                     <small class="text-muted">ROG Gaming, TUF Gaming</small>
                   </div>
                   <div class="user-progress">
-                    <small class="fw-semibold">82.5k</small>
+                    <small class="fw-semibold">{{$getOrderLaptops}}</small>
                   </div>
                 </div>
               </li>
@@ -361,10 +366,10 @@
                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                   <div class="me-2">
                     <h6 class="mb-0">Display & Desktop</h6>
-                    <small class="text-muted">Monitors</small>
+                    <small class="text-muted">Monitors, PC</small>
                   </div>
                   <div class="user-progress">
-                    <small class="fw-semibold">23.8k</small>
+                    <small class="fw-semibold">{{$getOrderDisplays}}</small>
                   </div>
                 </div>
               </li>
@@ -378,7 +383,7 @@
                     <small class="text-muted">Keyboard, Mouse, Graphics Card</small>
                   </div>
                   <div class="user-progress">
-                    <small class="fw-semibold">849k</small>
+                    <small class="fw-semibold">{{$getOrderComponents}}</small>
                   </div>
                 </div>
               </li>
@@ -483,6 +488,86 @@
 
         var chart = new ApexCharts(document.querySelector("#incomeChartNew2"), options);
         chart.render()
+</script>
+
+<script>
+    'use strict';
+
+(function () {
+  let cardColor, headingColor, axisColor, shadeColor, borderColor;
+
+  cardColor = config.colors.white;
+  headingColor = config.colors.headingColor;
+  axisColor = config.colors.axisColor;
+  borderColor = config.colors.borderColor;
+  const chartOrderStatistics = document.querySelector('#orderStatisticsChartNew'),
+  orderChartConfig = {
+    chart: {
+      height: 165,
+      width: 130,
+      type: 'donut'
+    },
+    labels: ['Laptop', 'Display-Desktop', 'Components'],
+    series: [{{$getOrderLaptops}}, {{$getOrderDisplays}}, {{$getOrderComponents}}],
+    colors: [config.colors.primary, config.colors.success, config.colors.info],
+    stroke: {
+      width: 5,
+      colors: cardColor
+    },
+    dataLabels: {
+      enabled: false,
+      formatter: function (val, opt) {
+        return parseInt(val);
+      }
+    },
+    legend: {
+      show: false
+    },
+    grid: {
+      padding: {
+        top: 0,
+        bottom: 0,
+        right: 15
+      }
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          size: '75%',
+          labels: {
+            show: true,
+            value: {
+              fontSize: '1.5rem',
+              fontFamily: 'Public Sans',
+              color: headingColor,
+              offsetY: -15,
+              formatter: function (val) {
+                return parseInt(val) + ' orders';
+              }
+            },
+            name: {
+              offsetY: 8,
+              fontFamily: 'Public Sans'
+            },
+            total: {
+              show: true,
+              fontSize: '0.8125rem',
+              color: axisColor,
+              label: 'Category',
+              formatter: function (w) {
+                return '';
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+if (typeof chartOrderStatistics !== undefined && chartOrderStatistics !== null) {
+  const statisticsChart = new ApexCharts(chartOrderStatistics, orderChartConfig);
+  statisticsChart.render();
+}
+})()
 </script>
 @endsection
 
