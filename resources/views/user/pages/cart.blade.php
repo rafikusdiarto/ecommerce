@@ -45,7 +45,7 @@
                                         </td>
                                         <td class="product-subtotal">@currency($item->total_price)</td>
                                         <td class="product-remove">
-                                            <a  href="{{route('removecart', $item->id)}}" onclick="confirm('yakin menghapus dari keranjang ?')"><i class="fa fa-trash"></i></a>
+                                            <a href="{{route('removecart', $item->id)}}"><i class="fa fa-trash"></i></a>
                                         </td>
                                         <div>
                                             <input type="hidden" value="{{$item->id}}" name="id">
@@ -59,7 +59,7 @@
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
                                 <div class="cart-shiping-update">
-                                    <button type="submit" onclick="confirm('yakin checkout?')" class="btn btn-primary text-black">Continue Shopping</button>
+                                    <button type="submit" onclick="return confirm('yakin checkout?')" class="btn btn-primary text-black">Continue Shopping</button>
                                 </div>
                                 <div class="cart-clear">
                                     <a>Total Price : @currency($countPrice)</a>
@@ -93,6 +93,11 @@
 @if(session("success"))
 <script>
     Swal.fire("Sukses", `{{ session("success") }}`, "success");
+</script>
+@endif
+@if(session("successDelete"))
+<script>
+    Swal.fire("Sukses", `{{ session("successDelete") }}`, "successDelete");
 </script>
 @endif
 @endsection

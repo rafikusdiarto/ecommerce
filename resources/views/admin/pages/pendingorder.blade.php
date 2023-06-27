@@ -46,7 +46,7 @@ Pending Order | Rawon E-Commerce
                                     <input type="hidden" name="product_id" value="{{$item->product_id}}">
                                     <input type="hidden" name="quantity" value="{{$item->product->quantity}}">
                                     <input type="hidden" name="total_quantity" value="{{$item->total_quantity}}">
-                                    <button class="btn btn-info text-white me-2" type="submit" onclick="confirm('apakah anda yakin acc order')">Accept</button>
+                                    <button class="btn btn-info text-white me-2" type="submit" onclick="return confirm('apakah anda yakin acc order')">Accept</button>
                                 </form>
                                 <form action="{{url('/admin/pending-order/reject/'.$item->id.'')}}" method="POST" enctype="multipart/form-data">
                                     @csrf

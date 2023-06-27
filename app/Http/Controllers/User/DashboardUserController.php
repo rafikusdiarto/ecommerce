@@ -80,7 +80,7 @@ class DashboardUserController extends Controller
     public function removeCart($id){
         try {
             Order::findOrFail($id)->delete();
-            return redirect()->back()->with('success', 'Product successfully delete from cart !');
+            return redirect()->back()->with('successDelete', 'Product successfully delete from cart !');
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {

@@ -50,7 +50,7 @@
                                     <div class="content">
                                         <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
                                         <span class="quantity-price">{{$item->total_quantity}} x <span class="amount">@currency($item->product->price)</span></span>
-                                        <a href="{{route('removecart', $item->id)}}" onclick="confirm('yakin menghapus dari keranjang ?')" class="remove">×</a>
+                                        <button href="{{route('removecart', $item->id)}}" onclick="confirm('yakin menghapus dari keranjang ?')" class="remove">×</button>
                                     </div>
                                 </li>
                             @endforeach
