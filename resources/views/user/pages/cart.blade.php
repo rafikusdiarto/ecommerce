@@ -13,6 +13,8 @@
             semua order sedang diproses
         </div>
         @endif
+
+        @if (!$getOrder->isEmpty())
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <form action="{{url('/user/checkout-order')}}" method="POST" enctype="multipart/form-data">
@@ -68,6 +70,24 @@
                 </form>
             </div>
         </div>
+
+        @else
+            <div class="empty-cart-area pb-100px pt-100px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="empty-text-contant text-center">
+                                <i class="pe-7s-shopbag"></i>
+                                <h3>There are no more items in your cart</h3>
+                                <a class="empty-cart-btn" href="{{url('/user')}}">
+                                    <i class="fa fa-arrow-left"> </i> Continue shopping
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @if(session("success"))
