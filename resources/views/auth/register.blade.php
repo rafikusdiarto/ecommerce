@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Shop | Hmart</title>
+        <title>Gaming | Rmart</title>
         <link href="https://cdn.tailwindcss.com" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
 
@@ -25,7 +25,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <div class="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">H-mart</div>
+                        <div class="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">R-mart</div>
                     </div>
                 </div>
                 <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">

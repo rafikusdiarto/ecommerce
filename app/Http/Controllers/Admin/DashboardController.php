@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
-
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -51,6 +51,8 @@ class DashboardController extends Controller
             $this->param['getSellingOctober'] = Order::whereMonth('updated_at', '10')->where('status', '=','paid')->sum('total_quantity');
             $this->param['getSellingNovember'] = Order::whereMonth('updated_at', '11')->where('status', '=','paid')->sum('total_quantity');
             $this->param['getSellingDecember'] = Order::whereMonth('updated_at', '12')->where('status', '=','paid')->sum('total_quantity');
+
+            $this->param['getTodaySales'] = Order::whereDate('updated_at', Carbon::today()->toDateString())->where('status', '=','paid')->count();
 
             $this->param['getOrderLaptops'] = Order::whereHas('product', function($query){
                 $query->where('product_category_id', 1);

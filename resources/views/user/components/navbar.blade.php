@@ -9,6 +9,7 @@
                 <li class="dropdown position-static"><a href="{{route('laptop.show')}}">Laptop</a></li>
                 <li class="dropdown position-static"><a href="{{route('display.show')}}">Display & Desktop</a></li>
                 <li class="dropdown position-static"><a href="{{route('components.show')}}">Components</a></li>
+                <li class="dropdown position-static"><a href="{{route('history')}}">History</a></li>
             </ul>
         </li>
         <li><a href="/user/contact">Contact</a></li>

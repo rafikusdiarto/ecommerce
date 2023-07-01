@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\SubCategoryController;
-use App\Http\Controllers\User\DashboardUserController;
-use App\Http\Controllers\User\CategoryUserController;
-use App\Http\Controllers\User\AboutController;
-use App\Http\Controllers\User\ContactController;
-use App\Http\Controllers\User\CartController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RedirectController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\HistoryController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\User\CategoryUserController;
+use App\Http\Controllers\User\DashboardUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,5 +88,6 @@ Route::get('/user/my-cart', [CartController::class, 'index'])->name('mycart');
 Route::post('/user/add-to-cart/{id}', [DashboardUserController::class, 'addToCart'])->name('addproductcart');
 Route::get('/user/remove-cart/{id}', [DashboardUserController::class, 'removeCart'])->name('removecart');
 Route::post('/user/checkout-order', [CartController::class, 'checkoutOrder'])->name('checkoutorder');
+Route::get('/user/history', [HistoryController::class, 'index'])->name('history');
 
 require __DIR__.'/auth.php';
