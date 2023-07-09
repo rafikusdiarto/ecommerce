@@ -89,5 +89,6 @@ Route::post('/user/add-to-cart/{id}', [DashboardUserController::class, 'addToCar
 Route::get('/user/remove-cart/{id}', [DashboardUserController::class, 'removeCart'])->name('removecart');
 Route::post('/user/checkout-order', [CartController::class, 'checkoutOrder'])->name('checkoutorder');
 Route::get('/user/history', [HistoryController::class, 'index'])->name('history');
+Route::get('/user/history/filter', [HistoryController::class, 'filter'])->name('filter');
 
 require __DIR__.'/auth.php';

@@ -550,9 +550,9 @@
     <script src="{{asset('users/assets/js/plugins/venobox.min.js')}}"></script>
     <script src="{{asset('users/assets/js/plugins/jquery-ui.min.js')}}"></script>
     <script src="{{asset('users/assets/js/plugins/mailchimp-ajax.js')}}"></script>
-    <script>
+    {{-- <script>
         AOS.init();
-    </script>
+    </script> --}}
 
     <!-- Minify Version -->
     <!-- <script src="assets/js/vendor.min.js"></script>
@@ -561,6 +561,7 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="{{asset('users/assets/js/main.js')}}"></script>
+    @yield('extraJS')
 </body>
 
 </html>

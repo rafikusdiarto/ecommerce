@@ -14,7 +14,7 @@
                 <p class="mb-4">
                   You have done <span class="fw-bold text-success">{{$getTodaySales}}</span> more sales today. Check your new badge in
                   your profile.
-                </p>
+                </p>    
 
                 {{-- <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> --}}
               </div>
