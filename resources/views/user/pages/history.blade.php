@@ -63,7 +63,7 @@
                                                         <span class="new d-block mt-2">Total Order : {{$item->total_quantity}}</span>
                                                         </span>
                                                         <div class="actions">
-                                                            <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="pe-7s-look"></i></button>
+                                                            <button class="action quickview openModal" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{ $item->id }}"><i class="pe-7s-look"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -89,6 +89,66 @@
                             </ul>
                         </div>
                     </div> --}}
+                    <!-- Modal -->
+                        <div class="modal modal-2 fade" id="exampleModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> <i class="pe-7s-close"></i></button>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
+                                                <!-- Swiper -->
+                                                <div class="swiper-container gallery-top">
+                                                    <div class="swiper-wrapper">
+                                                        <div class="swiper-slide">
+                                                            <img class="img-responsive m-auto" id="product_img" src="assets/images/product-image/zoom-image/1.webp" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
+                                                <div class="product-details-content quickview-content">
+                                                    <h2 id="product_name"></h2>
+                                                    <div class="pricing-meta">
+                                                        <ul class="d-flex">
+                                                            <li class="new-price" id="harga"></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="pro-details-rating-wrap">
+                                                        <div class="rating-product">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                        </div>
+                                                        <span class="read-review"><a class="reviews" href="#">( 2 Review )</a></span>
+                                                    </div>
+                                                    <p class="mt-30px" id="product_short_des"></p>
+                                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                                        <span>SKU:</span>
+                                                        <ul class="d-flex">
+                                                            <li>
+                                                                <a href="#">Ch-256xl</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                                        <span>Categories: </span>
+                                                        <ul class="d-flex">
+                                                            <li>
+                                                                <a id="product_categories"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- Modal end -->
                 </div>
             </div>
         </div>
@@ -180,3 +240,48 @@
     });
 </script>
 @endsection --}}
+
+@section('extraJS')
+<script>
+    $(document).ready(function () {
+        // Open the modal when the button is clicked
+        $(".openModal").click(function () {
+            var id = $(this).data("id"); // Get the data ID
+
+            $.ajax({
+                url: "{{ route('historynew') }}",
+                method: "GET",
+                data: {
+                    id:id
+                },
+                success: function (response) {
+                    // console.log(response)
+                    // Populate the modal with the retrieved data details
+                    $("#product_name").text(response.product_name);
+                    $("#harga").text(`${new Intl.NumberFormat('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR',
+                    }).format(response.price)}`);
+                    $("#product_short_des").text(response.product_short_des)
+                    $("#product_categories").text(response.product_category_name)
+                    var image = `{{asset('')}}${response.product_img}`
+                    var imageElement = $('#product_img');
+                    imageElement.attr('src', image)
+
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+            // Make an AJAX request to retrieve the data details
+
+        });
+
+        // Close the modal when the close button is clicked
+        $(".close").click(function () {
+            $("#myModal").hide();
+        });
+    });
+</script>
+
+@endsection

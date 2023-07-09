@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\User\CategoryUserController;
 use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\User\SingleProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,12 +84,14 @@ Route::controller(CategoryUserController::class) -> group(function(){
 });
 
 Route::get('/user/about', [AboutController::class, 'index']);
+Route::get('/user/about/{id}', [SingleProductController::class, 'index'])->name('singleproduct');
 Route::get('/user/contact', [ContactController::class, 'index']);
 Route::get('/user/my-cart', [CartController::class, 'index'])->name('mycart');
 Route::post('/user/add-to-cart/{id}', [DashboardUserController::class, 'addToCart'])->name('addproductcart');
 Route::get('/user/remove-cart/{id}', [DashboardUserController::class, 'removeCart'])->name('removecart');
 Route::post('/user/checkout-order', [CartController::class, 'checkoutOrder'])->name('checkoutorder');
 Route::get('/user/history', [HistoryController::class, 'index'])->name('history');
+Route::get('/user/history-new', [HistoryController::class, 'historyNew'])->name('historynew');
 Route::get('/user/history/filter', [HistoryController::class, 'filter'])->name('filter');
 
 require __DIR__.'/auth.php';

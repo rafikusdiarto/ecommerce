@@ -68,7 +68,7 @@
                                     <div class="content">
                                         <span class="category"><a
                                                 href="#">{{ $item->product_category_name }}</a></span>
-                                        <h5 class="title"><a href="single-product.html">{{ $item->product_name }}
+                                        <h5 class="title"><a href="{{route('singleproduct', $item->id)}}">{{ $item->product_name }}
                                             </a>
                                         </h5>
                                         <span class="price">

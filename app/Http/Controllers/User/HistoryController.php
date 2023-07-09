@@ -43,6 +43,14 @@ class HistoryController extends Controller
         }
     }
 
+    public function historyNew(Request $request){
+        $data = Order::select('orders.*', 'products.product_name', 'products.price', 'products.product_category_name', 'products.product_short_des', 'products.product_img')
+                        ->join('products', 'orders.product_id', 'products.id')
+                        ->where('orders.id', $request->id)
+                        ->first();
+        return response()->json($data);
+    }
+
     public function filter(Request $request)
     {
         $filter = $request->get('filter');
