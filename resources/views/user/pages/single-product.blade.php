@@ -82,7 +82,7 @@
                 <div class="description-review-wrapper">
                     <div class="description-review-topbar nav">
                         <button class="active" data-bs-toggle="tab" data-bs-target="#des-details1">Description</button>
-                        <button data-bs-toggle="tab" data-bs-target="#des-details3">Reviews (02)</button>
+                        <button data-bs-toggle="tab" data-bs-target="#des-details3">Reviews {{$countReview}}</button>
                     </div>
                     <div class="tab-content description-review-bottom">
                         <div id="des-details1" class="tab-pane active">
@@ -96,33 +96,33 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="review-wrapper">
-                                        <div class="single-review">
-                                            <div class="review-img">
-                                                <img src="assets/images/review-image/1.png" alt="" />
-                                            </div>
-                                            <div class="review-content">
-                                                <div class="review-top-wrap">
-                                                    <div class="review-left">
-                                                        <div class="review-name">
-                                                            <h4>White Lewis</h4>
-                                                        </div>
-                                                        <div class="rating-product">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
+                                        <div class="single-review d-block">
+                                            {{-- <div class="review-img">
+                                                <img src="{{asset('assets/images/review-image/1.png')}}" alt="" />
+                                            </div> --}}
+                                            @foreach ($getReview as $item)
+                                                <div class="review-content mb-4">
+                                                    <div class="review-top-wrap">
+                                                        <div class="review-left d-block">
+                                                            <div class="review-name">
+                                                                <h4>{{$item->user->name}}</h4>
+                                                            </div>
+                                                            <div class="rating-product">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </div>
+                                                            <div class="review-bottom">
+                                                                <p>
+                                                                    {{$item->review_description}}
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="review-bottom">
-                                                    <p>
-                                                        Vestibulum ante ipsum primis aucibus orci luctustrices posuere
-                                                        cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper
-                                                        euismod vehicula. Phasellus quam nisi, congue id nulla.
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                     <div class="ratting-form-wrapper pl-50">
                                         <h3>Add a Review</h3>
                                         <div class="ratting-form">
-                                            <form action="#">
+                                            <form method="POST" action="{{route('createreview', $getSingleProduct->id)}}" enctype="multipart/form-data">
                                                 <div class="star-box">
                                                     <span>Your rating:</span>
                                                     <div class="rating-product">
@@ -142,22 +142,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="rating-form-style">
-                                                            <input placeholder="Name" type="text" />
+                                                        @csrf
+                                                        <div class="col-md-12">
+                                                            <div class="rating-form-style form-submit">
+                                                                <input type="hidden" value="{{$getSingleProduct->id}}" name="product_id">
+                                                                <textarea name="review_description" placeholder="Message"></textarea>
+                                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="rating-form-style">
-                                                            <input placeholder="Email" type="email" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="rating-form-style form-submit">
-                                                            <textarea name="Your Review" placeholder="Message"></textarea>
-                                                            <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
@@ -172,4 +164,10 @@
         </div>
     </div>
 </div>
+@if(session("success"))
+<script>
+    Swal.fire("Sukses", `{{ session("success") }}`, "success");
+</script>
+@endif
+
 @endsection

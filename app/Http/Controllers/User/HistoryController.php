@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
+    private $param;
+    public function __construct(){
+        $this->middleware(['role:user']);
+    }
     public function index(){
         try {
             $this->param['getHistoryOrder'] = Order::where([

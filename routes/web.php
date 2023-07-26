@@ -6,6 +6,7 @@ use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\Admin\ProductController;
@@ -85,6 +86,7 @@ Route::controller(CategoryUserController::class) -> group(function(){
 
 Route::get('/user/about', [AboutController::class, 'index']);
 Route::get('/user/about/{id}', [SingleProductController::class, 'index'])->name('singleproduct');
+Route::post('/user/add-review/{id}', [SingleProductController::class, 'createReview'])->name('createreview');
 Route::get('/user/contact', [ContactController::class, 'index']);
 Route::get('/user/my-cart', [CartController::class, 'index'])->name('mycart');
 Route::post('/user/add-to-cart/{id}', [DashboardUserController::class, 'addToCart'])->name('addproductcart');
