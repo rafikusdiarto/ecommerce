@@ -11,6 +11,7 @@ use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\admin\DiscountController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\User\CategoryUserController;
@@ -67,6 +68,11 @@ Route::controller(ProductController::class) -> group(function(){
     Route::get('/admin/delete-product/{id}', 'DeleteProduct')->name('deleteproduct');
     Route::get('/admin/edit-product-img/{id}', 'EditProductImg')->name('editproductimg');
     Route::post('/admin/update-product-img/', 'UpdateProductImg')->name('updateproductimg');
+});
+
+Route::controller(DiscountController::class) -> group(function(){
+    Route::get('/admin/all-discount', 'index')->name('alldiscount');
+    Route::get('/admin/edit-discount', 'editdiscount')->name('editdiscount');
 });
 
 Route::controller(OrderController::class) -> group(function(){

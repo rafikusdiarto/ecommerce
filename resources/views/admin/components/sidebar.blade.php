@@ -101,6 +101,13 @@
               <div data-i18n="Analytics">All Product</div>
           </a>
       </li>
+
+      <li class="menu-item {{ (request()->segment(2) == 'all-discount') ? 'active' : '' }}">
+          <a href="{{route('alldiscount')}}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-dollar"></i>
+              <div data-i18n="Analytics">Discount</div>
+          </a>
+      </li>
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Orders</span>
       </li>
