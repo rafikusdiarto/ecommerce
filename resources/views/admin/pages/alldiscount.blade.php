@@ -45,7 +45,11 @@ All Discount | Rawon E-Commerce
                         <td>{{$item->percent_discount}}</td>
                         <td>{{$item->price_discount}}</td>
                         <td>{{$item->active_period}}</td>
-                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        @if ($item->status == 'active')
+                            <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        @else
+                            <td><span class="badge bg-label-danger me-1">Non Active</span></td>
+                        @endif
                         <td>
                             <a href="{{route('editdiscount')}}" class="btn btn-warning">Edit</a>
                             <a onclick="return confirm('apakah anda yakin menghapus data')" class="btn btn-danger text-white">Delete</a>
