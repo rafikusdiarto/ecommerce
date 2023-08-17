@@ -11,7 +11,7 @@ use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\HistoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\admin\DiscountController;
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\User\CategoryUserController;
@@ -70,10 +70,11 @@ Route::controller(ProductController::class) -> group(function(){
     Route::post('/admin/update-product-img/', 'UpdateProductImg')->name('updateproductimg');
 });
 
-Route::controller(DiscountController::class) -> group(function(){
-    Route::get('/admin/all-discount', 'index')->name('alldiscount');
-    Route::get('/admin/edit-discount', 'editdiscount')->name('editdiscount');
-});
+Route::get('/admin/all-discount', [DiscountController::class, 'index'])->name('alldiscount');
+Route::get('/admin/edit-discount', [DiscountController::class, 'edit'])->name('editdiscount');
+Route::get('/admin/add-discount', [DiscountController::class, 'add'])->name('adddiscount');
+Route::post('/admin/store-discount', [DiscountController::class, 'storeDiscount'])->name('storediscount');
+
 
 Route::controller(OrderController::class) -> group(function(){
     Route::get('/admin/pending-order', 'Index')->name('pendingorder');

@@ -2,10 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Discount extends Model
 {
     use HasFactory;
+    protected $guarded = [
+        'id',
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
