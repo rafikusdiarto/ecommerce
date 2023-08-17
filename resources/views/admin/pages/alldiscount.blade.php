@@ -36,19 +36,22 @@ All Discount | Rawon E-Commerce
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                <tr>
-                    <td>1</td>
-                    <td>Laptop</td>
-                    <td>Rp. 1000.0000</td>
-                    <td>20%</td>
-                    <td>Rp. 800.000</td>
-                    <td>09/08/2023</td>
-                    <td><span class="badge bg-label-primary me-1">Active</span></td>
-                    <td>
-                        <a href="{{route('editdiscount')}}" class="btn btn-warning">Edit</a>
-                        <a onclick="return confirm('apakah anda yakin menghapus data')" class="btn btn-danger text-white">Delete</a>
-                    </td>
-                </tr>
+                <?php $no = 1 ;?>
+                @foreach ($getDiscount as $item)
+                    <tr>
+                        <td>{{$no++}}</td>
+                        <td>{{$item->product->product_name}}</td>
+                        <td>@currency($item->product->price)</td>
+                        <td>{{$item->percent_discount}}</td>
+                        <td>{{$item->price_discount}}</td>
+                        <td>{{$item->active_period}}</td>
+                        <td><span class="badge bg-label-primary me-1">Active</span></td>
+                        <td>
+                            <a href="{{route('editdiscount')}}" class="btn btn-warning">Edit</a>
+                            <a onclick="return confirm('apakah anda yakin menghapus data')" class="btn btn-danger text-white">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
             </table>
         </div>

@@ -15,7 +15,14 @@ class DiscountController extends Controller
     }
 
     public function index(){
-        return view('admin.pages.alldiscount');
+        try {
+            $this->param['getDiscount'] = Discount::all();
+            return view('admin.pages.alldiscount', $this->param);
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 
     public function add(){
