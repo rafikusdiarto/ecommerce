@@ -75,7 +75,7 @@ Route::get('/admin/edit-discount/{id}', [DiscountController::class, 'edit'])->na
 Route::get('/admin/add-discount', [DiscountController::class, 'add'])->name('adddiscount');
 Route::post('/admin/store-discount', [DiscountController::class, 'storeDiscount'])->name('storediscount');
 Route::post('/admin/update-discount/{id}', [DiscountController::class, 'updateDiscount'])->name('updatediscount');
-
+Route::get('/admin/delete-discount/{id}', [DiscountController::class, 'deleteDiscount'])->name('deletediscount');
 
 Route::controller(OrderController::class) -> group(function(){
     Route::get('/admin/pending-order', 'Index')->name('pendingorder');

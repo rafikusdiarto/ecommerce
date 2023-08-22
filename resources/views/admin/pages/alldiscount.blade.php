@@ -43,7 +43,7 @@ All Discount | Rawon E-Commerce
                         <td>{{$item->product->product_name}}</td>
                         <td>@currency($item->product->price)</td>
                         <td>{{$item->percent_discount}}</td>
-                        <td>{{$item->price_discount}}</td>
+                        <td>@currency($item->price_discount)</td>
                         <td>{{$item->active_period}}</td>
                         @if ($item->status == 'active')
                             <td><span class="badge bg-label-primary me-1">Active</span></td>
@@ -52,7 +52,7 @@ All Discount | Rawon E-Commerce
                         @endif
                         <td>
                             <a href="{{route('editdiscount', $item->id)}}" class="btn btn-warning">Edit</a>
-                            <a onclick="return confirm('apakah anda yakin menghapus data')" class="btn btn-danger text-white">Delete</a>
+                            <a href="{{route('deletediscount', $item->id)}}" onclick="return confirm('apakah anda yakin menghapus data')" class="btn btn-danger text-white">Delete</a>
                         </td>
                     </tr>
                 @endforeach

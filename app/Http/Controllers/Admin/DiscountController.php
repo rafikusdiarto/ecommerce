@@ -101,4 +101,16 @@ class DiscountController extends Controller
             return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
     }
+
+    public function deleteDiscount($id){
+        try {
+            Discount::findOrFail($id)->delete();
+            return redirect()-> route('alldiscount')-> with('message', 'discount successfully delete');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+
+    }
 }
