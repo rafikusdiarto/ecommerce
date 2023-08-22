@@ -65,7 +65,40 @@ class DiscountController extends Controller
         }
     }
 
-    public function edit(){
-        return view('admin.pages.editdiscount');
+    public function edit($id){
+        try {
+            $this->param['discountInfo'] = Discount::findOrFail($id);
+            return view('admin.pages.editdiscount', $this->param);
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
+
+    public function updateDiscount(Request $request){
+        $product_price = $request->price;
+        $percent_discount = $request->percent_discount;
+        $discount_rumus = $product_price * $percent_discount / 100;
+        $discount_id = $request->discount_id;
+
+        try {
+            $request->validate([
+                'percent_discount' => 'required',
+                'active_period' => 'required',
+            ]);
+
+            Discount::findOrFail($discount_id)->update([
+                'price_discount' => $product_price - $discount_rumus,
+                'percent_discount' => $percent_discount,
+                'active_period' => $request->active_period,
+                'status' => $request->status,
+            ]);
+            return redirect()-> route('alldiscount')-> with('message', 'discount successfully update');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
     }
 }

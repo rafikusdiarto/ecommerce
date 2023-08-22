@@ -71,9 +71,10 @@ Route::controller(ProductController::class) -> group(function(){
 });
 
 Route::get('/admin/all-discount', [DiscountController::class, 'index'])->name('alldiscount');
-Route::get('/admin/edit-discount', [DiscountController::class, 'edit'])->name('editdiscount');
+Route::get('/admin/edit-discount/{id}', [DiscountController::class, 'edit'])->name('editdiscount');
 Route::get('/admin/add-discount', [DiscountController::class, 'add'])->name('adddiscount');
 Route::post('/admin/store-discount', [DiscountController::class, 'storeDiscount'])->name('storediscount');
+Route::post('/admin/update-discount/{id}', [DiscountController::class, 'updateDiscount'])->name('updatediscount');
 
 
 Route::controller(OrderController::class) -> group(function(){

@@ -13,30 +13,52 @@ Edit Discount | Rawon E-Commerce
               <h5 class="mb-0">Edit Discount</h5>
             </div>
             <div class="card-body">
-              <form method="POST" enctype="multipart/form-data">
-                <input type="hidden" class="form-control" value="" name="id" />
+              <form method="POST" action="{{route('updatediscount', $discountInfo->id)}}" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" class="form-control" value="{{$discountInfo->id}}" name="discount_id" />
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Product Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" value="{{$discountInfo->product->product_name}}" id="product_name" name="product_name" placeholder="50" readonly/>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Product Price</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" value="{{$discountInfo->product->price}}" id="price" name="price" placeholder="50" readonly/>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Price Discount</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" value="{{$discountInfo->price_discount}}" id="price_discount" name="price_discount" placeholder="50" readonly/>
+                  </div>
+                </div>
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label" for="basic-default-name">Percent Discount (%)</label>
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" value="" id="quantity" name="quantity" placeholder="50"/>
+                    <input type="number" class="form-control" value="{{$discountInfo->percent_discount}}" id="percent_discount" name="percent_discount" placeholder="50"/>
                   </div>
                 </div>
 
                 <div class="row mb-3">
                   <label class="col-sm-2 col-form-label" for="basic-default-name">Active Period</label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control" value="" id="product_short_des" name="product_short_des" />
+                    <input type="date" class="form-control" value="{{$discountInfo->active_period}}" id="active_period" name="active_period" />
                   </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="basic-default-name">Status</label>
                     <div class="col-sm-10">
-                        <select class="form-select" aria-label="Default select example" id="category_id" name="category_id">
-                            <option selected>Open this select menu</option>
-                                <option value="active">Active</option>
-                                <option value="nonactive">Non Active</option>
+                        <select class="form-select text-uppercase" aria-label="Default select example" id="status" name="status">
+                            <option selected>{{$discountInfo->status}}</option>
+                                <option>Active</option>
+                                <option>Non Active</option>
                           </select>
                     </div>
                 </div>

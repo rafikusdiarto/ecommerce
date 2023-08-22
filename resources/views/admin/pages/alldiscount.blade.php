@@ -51,7 +51,7 @@ All Discount | Rawon E-Commerce
                             <td><span class="badge bg-label-danger me-1">Non Active</span></td>
                         @endif
                         <td>
-                            <a href="{{route('editdiscount')}}" class="btn btn-warning">Edit</a>
+                            <a href="{{route('editdiscount', $item->id)}}" class="btn btn-warning">Edit</a>
                             <a onclick="return confirm('apakah anda yakin menghapus data')" class="btn btn-danger text-white">Delete</a>
                         </td>
                     </tr>
