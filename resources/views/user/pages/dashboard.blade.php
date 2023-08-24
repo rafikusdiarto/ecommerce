@@ -41,7 +41,6 @@
     <!-- Product Area Start -->
     <div class="product-area pb-100px">
         <div class="container">
-            <!-- Section Title & Tab Start -->
             <div class="row">
                 <div class="col-12">
                     <div class="section-title text-center">
@@ -50,7 +49,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Section Title & Tab End -->
+
+            {{-- product --}}
             <div class="row">
                 <div class="col">
                     <div class="row mb-n-30px">
@@ -83,6 +83,60 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                </div>
+            </div>
+
+            {{-- discount --}}
+            <div class="feature-product-area pb-100px pt-100px">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title text-center">
+                                <h2 class="title">Best Offers</h2>
+                                <p>There are many products discount are available</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-product-slider swiper-container slider-nav-style-1">
+                        <div class="swiper-wrapper product">
+                                @foreach ($getProductDiscount as $item)
+                                <div class="swiper-slide feature-right-content">
+                                    <div class="image-side">
+                                        <span class="badges text-white">
+                                            <span class="sale">{{$item->percent_discount}}%</span>
+                                        </span>
+                                        <img src="{{$item->product->product_img}}" alt="">
+                                    </div>
+                                    <div class="content-side">
+                                        <div class="deal-timing">
+                                            <span>End In:</span>
+                                            <div data-countdown="2023/09/15"></div>
+                                        </div>
+                                        <div class="prize-content">
+                                            <h5 class="title"><a>{{$item->product->product_name}}</a></h5>
+                                            <span class="price">
+                                        <span class="old">@currency($item->product->price)</span>
+                                            <span class="new">@currency($item->price_discount)</span>
+                                            </span>
+                                        </div>
+                                        <div class="product-feature">
+                                            <ul>
+                                                <li>Predecessor : <span>None.</span></li>
+                                                <li>Support Type : <span>Neutral.</span></li>
+                                                <li>Cushioning : <span>High Energizing.</span></li>
+                                                <li>Total Weight : <span> 300gm</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-buttons">
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                     </div>
                 </div>
             </div>

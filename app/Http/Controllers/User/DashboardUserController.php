@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Order;
+use App\Models\Discount;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -22,6 +23,7 @@ class DashboardUserController extends Controller
         try {
             $this->param['getProduct'] = Product::all();
             $this->param['getCategory'] = Category::all();
+            $this->param['getProductDiscount'] = Discount::all();
             $this->param['getOrder'] = Order::where([
                                             ['status', '=', 'add to cart'],
                                             ['user_id', '=', Auth::user()->id]
