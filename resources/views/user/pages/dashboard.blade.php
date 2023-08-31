@@ -110,8 +110,9 @@
                                     </div>
                                     <div class="content-side">
                                         <div class="deal-timing">
-                                            <span>End In:</span>
-                                            <div data-countdown="2023/09/15"></div>
+                                            <span>End In: </span>
+                                            <div data-countdown="{{$item->active_period}}"></div>
+
                                         </div>
                                         <div class="prize-content">
                                             <h5 class="title"><a>{{$item->product->product_name}}</a></h5>
@@ -261,5 +262,13 @@
         </script>
         @endif
 
+        <script>
+            $('[data-countdown]').each(function() {
+            var $this = $(this), finalDate = $(this).data('countdown');
+            $this.countdown(finalDate, function(event) {
+                $this.html(event.strftime('%D days %H:%M:%S'));
+            });
+            });
+        </script>
 
 @endsection
