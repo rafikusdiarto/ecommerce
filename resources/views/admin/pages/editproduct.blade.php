@@ -1,6 +1,6 @@
 @extends("admin.layout.template")
 @section('page_title')
-    Edit Product | Rawon E-Commerce
+    Edit Product |  E-Commerce
 @endsection
 @section('content')
 

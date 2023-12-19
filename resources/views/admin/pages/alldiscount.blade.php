@@ -1,6 +1,6 @@
 @extends('admin.layout.template')
 @section('page_title')
-All Discount | Rawon E-Commerce
+All Discount |  E-Commerce
 @endsection
 @section('content')
     <div class="container mt-5">

@@ -1,6 +1,6 @@
 @extends("admin.layout.template")
 @section('page_title')
-    Dashboard | Rawon E-Commerce
+    Dashboard | E-Commerce
 @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -14,7 +14,7 @@
                 <p class="mb-4">
                   You have done <span class="fw-bold text-success">{{$getTodaySales}}</span> more sales today. Check your new badge in
                   your profile.
-                </p>    
+                </p>
 
                 {{-- <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> --}}
               </div>
@@ -296,7 +296,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12 mb-4">
+          {{-- <div class="col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
@@ -316,7 +316,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

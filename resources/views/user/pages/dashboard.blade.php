@@ -109,11 +109,11 @@
                                         <img src="{{$item->product->product_img}}" alt="">
                                     </div>
                                     <div class="content-side">
-                                        <div class="deal-timing">
+                                        {{-- <div class="deal-timing">
                                             <span>End In: </span>
                                             <div data-countdown="{{$item->active_period}}"></div>
 
-                                        </div>
+                                        </div> --}}
                                         <div class="prize-content">
                                             <h5 class="title"><a>{{$item->product->product_name}}</a></h5>
                                             <span class="price">

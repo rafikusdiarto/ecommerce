@@ -1,6 +1,6 @@
 @extends("admin.layout.template")
 @section('page_title')
-    Edit Category | Rawon E-Commerce
+    Edit Category |  E-Commerce
 @endsection
 @section('content')
 <div class="container mt-5">

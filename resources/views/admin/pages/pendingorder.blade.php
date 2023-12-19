@@ -1,6 +1,6 @@
 @extends("admin.layout.template")
 @section('page_title')
-Pending Order | Rawon E-Commerce
+Pending Order |  E-Commerce
 
 @endsection
 @section('content')

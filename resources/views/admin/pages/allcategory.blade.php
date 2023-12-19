@@ -1,6 +1,6 @@
 @extends("admin.layout.template")
 @section('page_title')
-All Category | Rawon E-Commerce
+All Category |  E-Commerce
 
 @endsection
 @section('content')

@@ -1,6 +1,6 @@
 @extends("admin.layout.template")
 @section('page_title')
-    Edit Sub Category | Rawon E-Commerce
+    Edit Sub Category |  E-Commerce
 @endsection
 @section('content')
 <div class="container mt-5">
@@ -31,7 +31,7 @@
                     <input type="text" class="form-control" id="subcategory_name" placeholder="Laptop" name="subcategory_name" value="{{$subcatinfo->subcategory_name}}" />
                   </div>
                 </div>
-                
+
                 <div class="row justify-content-end">
                   <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Update Sub Category</button>

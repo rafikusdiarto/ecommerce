@@ -33,9 +33,9 @@ class DashboardUserController extends Controller
                                             ['status', '=', 'add to cart'],
                                             ['user_id', '=', Auth::user()->id]
                                         ])->count();
-            $eventStartDate = Discount::first()->active_period;
-            $currentTime = Carbon::now();
-            $this->param['countdown'] = $currentTime->diff($eventStartDate)->format('%d days %h hours %i minutes %s seconds');
+            // $eventStartDate = Discount::first()->active_period;
+            // $currentTime = Carbon::now();
+            // $this->param['countdown'] = $currentTime->diff($eventStartDate)->format('%d days %h hours %i minutes %s seconds');
 
             return view('user.pages.dashboard', $this->param);
         } catch (\Exception $e) {
