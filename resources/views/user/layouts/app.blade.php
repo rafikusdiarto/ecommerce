@@ -25,6 +25,17 @@
     <!-- Minify Version -->
     <!-- <link rel="stylesheet" href="assets/css/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> -->
+    <style>
+       input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+    </style>
 </head>
 
 <body>
@@ -48,7 +59,12 @@
                                     <a href="single-product.html" class="image"><img src="{{asset($item->product->product_img)}}" alt="Cart product Image"></a>
                                     <div class="content">
                                         <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
-                                        <span class="quantity-price">{{$item->total_quantity}} x <span class="amount">@currency($item->product->price)</span></span>
+                                        <div class="d-flex">
+                                            <input type="number" name="total_quantity" value="{{$item->total_quantity}}" class="form-control"/>
+                                            <p class="mx-2">x</p>
+                                            <span class="amount">@currency($item->product->price)</span>
+                                        </div>
+                                        <button type="submit" class="">Save</button>
                                         <a href="{{route('removecart', $item->id)}}" class="remove">×</a>
                                     </div>
                                 </li>
