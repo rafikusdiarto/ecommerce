@@ -30,6 +30,7 @@
                                     <th>Total Order</th>
                                     <th>Total Price</th>
                                     <th>Action</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,6 +48,11 @@
                                         <td class="product-remove">
                                             <a href="{{route('removecart', $item->id)}}"><i class="fa fa-trash"></i></a>
                                         </td>
+                                        <td class="">
+                                            <div class="form-check">
+                                                <input class="form-check-input" style="height: 27px" name="selected_items[]" value="{{ $item->id }}" type="checkbox"/>
+                                              </div>
+                                        </td>
                                         <div>
                                             <input type="hidden" value="{{$item->id}}" name="id">
                                         </div>
@@ -58,8 +64,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="cart-shiping-update-wrapper">
-                                <div class="cart-shiping-update">
-                                    <button type="submit" onclick="return confirm('yakin checkout?')" class="btn btn-primary text-black">Continue Shopping</button>
+                                <div class="cart-clear">
+                                    <button type="submit" onclick="return confirm('yakin checkout?')" class="bg-info">Continue Shopping</button>
                                 </div>
                                 <div class="cart-clear">
                                     <a>Total Price : @currency($countPrice)</a>
