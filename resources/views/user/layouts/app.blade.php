@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="{{asset('users/assets/css/jquery-ui.min.css')}}">
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{asset('users/assets/css/style.css')}}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <!-- Minify Version -->
     <!-- <link rel="stylesheet" href="assets/css/plugins.min.css">
@@ -50,7 +49,7 @@
                                     <div class="content">
                                         <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
                                         <span class="quantity-price">{{$item->total_quantity}} x <span class="amount">@currency($item->product->price)</span></span>
-                                        <button href="{{route('removecart', $item->id)}}" onclick="confirm('yakin menghapus dari keranjang ?')" class="remove">×</button>
+                                        <a href="{{route('removecart', $item->id)}}" class="remove">×</a>
                                     </div>
                                 </li>
                             @endforeach
@@ -76,6 +75,8 @@
     <!-- Global Vendor, plugins JS -->
     <!-- JS Files
     ============================================ -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script src="{{asset('users/assets/js/vendor/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('users/assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('users/assets/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>

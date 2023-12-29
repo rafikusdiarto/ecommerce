@@ -50,6 +50,7 @@ class DashboardUserController extends Controller
 
         try {
             $product = Product::find($id);
+
             if($product->quantity < $request->jumlah_order){
                 return redirect()->back()->with('failed', 'Failed order product !');
             }elseif ($request->jumlah_order < 1) {
@@ -61,26 +62,45 @@ class DashboardUserController extends Controller
             $total_price = $product_price * $jumlah_order;
             $jumlah_cart_item = $jumlah_order + $product->quantity;
 
-            $order = Order::updateOrCreate([
-                'product_id' =>$id,
-                'user_id' => Auth::user()->id,
-                'total_quantity' => $jumlah_order,
-                'total_price' => $total_price,
-                'status' => 'add to cart',
-            ]);
+            $order = Order::where('product_id', $id)
+                    ->where('status', 'add to cart')
+                    ->first();;
 
-            if($order->wasRecentlyCreated){
-                return redirect()->back()->with('success', 'Product successfully added to cart !');
-            }else {
-                $order->total_quantity += $jumlah_order;
-                $order->total_price += $total_price;
-                $order->save();
-                return redirect()->back()->with('success', 'Product successfully added to cart !');
+
+            if ($order) {
+                if ($jumlah_order <= $product->quantity) {
+                    $jumlahDiKeranjang = $order->total_quantity;
+                    // dd($jumlahDiKeranjang);
+                    $totalJumlahPesanan = $request->jumlah_order + $jumlahDiKeranjang;
+                    if ($totalJumlahPesanan <= $product->quantity ) {
+                        $order->total_quantity += $jumlah_order;
+                        $order->total_price += $total_price;
+                        $order->save();
+                    }else {
+                        return redirect()->back()->with('failed', 'Failed order product !');
+                    }
+                } else {
+                    return redirect()->back()->with('failed', 'Failed order product !');
+                }
+            } else {
+                if ($jumlah_order <= $product->quantity) {
+                    Order::create([
+                    'product_id' =>$id,
+                    'user_id' => Auth::user()->id,
+                    'total_quantity' => $jumlah_order,
+                    'total_price' => $total_price,
+                    'status' => 'add to cart',
+                    ]);
+                } else {
+                    return redirect()->back()->with('failed', 'Failed order product !');
+                }
             }
+            return redirect()->back()->with('success', 'Product successfully added to cart !');
+
         } catch (\Exception $e) {
-            return redirect()->back()->with('failed', $e->getMessage());
+            return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->back()->with('failed', $e->getMessage());
+            return redirect()->back()->withError($e->getMessage());
         }
     }
 

@@ -6,6 +6,21 @@
     </div>
     <div class="banner-area style-two pt-100px pb-100px">
         <div class="container">
+            @if (session('success'))
+            <div alert
+                class="alert alert-success">
+                {{ session('success') }}</div>
+        @endif
+        @if (session('error'))
+            <div alert
+                class="alert alert-danger">
+                {{ session('error') }}</div>
+        @endif
+        @if (session('failed'))
+            <div alert
+                class="alert alert-info">
+                {{ session('failed') }}</div>
+        @endif
             <div class="row">
                 <div class="col-md-4" data-aos="fade-up" data-aos-duration="2000">
                     <div class="single-banner nth-child-2 mb-lm-30px p-5">
