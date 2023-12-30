@@ -55,19 +55,23 @@ input[type=number]::-webkit-outer-spin-button {
                     <div class="body customScroll">
                         <ul class="minicart-product-list">
                             @foreach ($getOrder as $item)
-                                <li>
-                                    <a href="single-product.html" class="image"><img src="{{asset($item->product->product_img)}}" alt="Cart product Image"></a>
-                                    <div class="content">
-                                        <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
-                                        <div class="d-flex">
-                                            <input type="number" name="total_quantity" value="{{$item->total_quantity}}" class="form-control"/>
-                                            <p class="mx-2">x</p>
-                                            <span class="amount">@currency($item->product->price)</span>
+                                <form action="{{route('updatecart', $item->id)}}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PATCH')
+                                    <li class="my-4">
+                                        <a href="single-product.html" class="image"><img src="{{asset($item->product->product_img)}}" alt="Cart product Image"></a>
+                                        <div class="content">
+                                            <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
+                                            <div class="d-flex">
+                                                <input type="number" name="total_quantity" value="{{$item->total_quantity}}" class="form-control"/>
+                                                <p class="mx-2">x</p>
+                                                <span class="amount">@currency($item->product->price)</span>
+                                            </div>
+                                            <button type="submit" class="bg-info rounded">Save</button>
+                                            <a href="{{route('removecart', $item->id)}}" class="remove">×</a>
                                         </div>
-                                        <button type="submit" class="">Save</button>
-                                        <a href="{{route('removecart', $item->id)}}" class="remove">×</a>
-                                    </div>
-                                </li>
+                                    </li>
+                                </form>
                             @endforeach
                         </ul>
                     </div>
