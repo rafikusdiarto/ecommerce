@@ -72,8 +72,13 @@
                                 <div class="card h-100 product">
                                     <div class="thumb">
                                         <a class="image text-center">
-                                            <img src="{{ $item->product_img }}" alt="Product" />
-                                            <img class="hover-image" src="{{ $item->product_img }}" alt="Product" />
+                                            @if ($item->quantity == 0)
+                                                <img src="{{ $item->product_img }}" style="filter:blur(2px)" alt="Product" />
+                                                <img class="hover-image" src="{{ $item->product_img }}" style="filter:blur(2px)" alt="Product" />
+                                            @else
+                                                <img src="{{ $item->product_img }}" alt="Product" />
+                                                <img class="hover-image" src="{{ $item->product_img }}" alt="Product" />
+                                            @endif
                                         </a>
                                     </div>
                                     <div class="content">
