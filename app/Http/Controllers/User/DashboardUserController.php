@@ -117,9 +117,15 @@ class DashboardUserController extends Controller
 
     public function updateCart(Request $request, $id){
         try {
-            Order::find($id)->update([
-                'total_quantity' => $request->total_quantity
-            ]);
+            $order = Order::find($id)->first();
+            $product = $order->product->quantity;
+            if ($request->total_quantity <= $product) {
+                Order::find($id)->update([
+                    'total_quantity' => $request->total_quantity
+                ]);
+            }else {
+                return redirect()->back()->with('failed', 'Failed order product !');
+            }
             return redirect()->back()->with('success', 'Product quantity successfully update from cart !');
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
