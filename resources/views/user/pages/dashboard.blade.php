@@ -73,8 +73,13 @@
                                     <div class="thumb">
                                         <a class="image text-center">
                                             @if ($item->quantity == 0)
+                                            <div>
                                                 <img src="{{ $item->product_img }}" style="filter:blur(2px)" alt="Product" />
+                                                <h2 class="text-danger alert alert-warning" style="position: absolute;top: 0;
+                                                left: 0;z-index:3">SOLD OUT</h2>
                                                 <img class="hover-image" src="{{ $item->product_img }}" style="filter:blur(2px)" alt="Product" />
+
+                                            </div>
                                             @else
                                                 <img src="{{ $item->product_img }}" alt="Product" />
                                                 <img class="hover-image" src="{{ $item->product_img }}" alt="Product" />
@@ -174,28 +179,32 @@
                             <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                                 <!-- Swiper -->
                                 <div class="swiper-container gallery-top">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{ $item->product_img }}"
-                                                alt="">
+                                    @if ($item->quantity == 0)
+                                        <img src="{{ $item->product_img }}" style="filter:blur(2px)" alt="Product" />
+                                    @else
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img class="img-responsive m-auto" src="{{ $item->product_img }}"
+                                                    alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="img-responsive m-auto" src="{{ $item->product_img }}"
+                                                    alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="img-responsive m-auto" src="{{ $item->product_img }}"
+                                                    alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="img-responsive m-auto" src="{{ $item->product_img }}"
+                                                    alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img class="img-responsive m-auto" src="{{ $item->product_img }}"
+                                                    alt="">
+                                            </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{ $item->product_img }}"
-                                                alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{ $item->product_img }}"
-                                                alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{ $item->product_img }}"
-                                                alt="">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img class="img-responsive m-auto" src="{{ $item->product_img }}"
-                                                alt="">
-                                        </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="200">
