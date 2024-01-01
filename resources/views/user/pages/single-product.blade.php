@@ -31,9 +31,9 @@
                             </div>
                             <!-- Add Arrows -->
                             <!-- <div class="swiper-buttons">
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
-                                </div> -->
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                        </div> -->
                         </div>
                         <!-- Swiper -->
                         <div class="swiper-container zoom-top-2 align-self-start">
@@ -102,48 +102,77 @@
                                     Review)</a></span>
                         </div>
                         <p class="mt-30px">{{ $getSingleProduct->product_short_des }}</p>
-                        <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                            <span>SKU:</span>
-                            <ul class="d-flex">
-                                <li>
-                                    <a href="#">Ch-256xl</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                            <span>Categories: </span>
-                            <ul class="d-flex">
-                                <li>
-                                    <a href="#">{{ $getSingleProduct->product_category_name }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
-                            <span>Tags: </span>
-                            <ul class="d-flex">
-                                <li>
-                                    <a href="#">Smart Device, </a>
-                                </li>
-                                <li>
-                                    <a href="#">Phone</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="pro-details-quality">
-                            <div class="cart-plus-minus">
-                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
+                        <div class="row">
+                            <div class="col">
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Product Code: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">GMD-030001</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Stock: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">{{ $getSingleProduct->quantity }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Subcategory: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">{{$getSingleProduct->product_subcategory_name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="pro-details-cart">
-                                <button class="add-cart"> Add To
-                                    Cart</button>
+                            <div class="col">
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Categories: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">{{ $getSingleProduct->product_category_name }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
+                                    <span>Tags: </span>
+                                    <ul class="d-flex">
+                                        <li>
+                                            <a href="#">Smart Device, </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Phone</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="pro-details-compare-wishlist pro-details-wishlist ">
+                        </div>
+
+                        <form action="{{ url('/user/add-to-cart', $getSingleProduct->id) }}" method="post">
+                            @csrf
+                            <div class="pro-details-quality">
+                                <div class="cart-plus-minus">
+                                    <input class="cart-plus-minus-box" type="number" name="jumlah_order"
+                                        value="1" />
+                                </div>
+                                <div class="pro-details-cart" style="display: block">
+                                    <button class="add-cart" type="submit"> Add To
+                                        Cart</button>
+                                </div>
+
+                                {{-- <div class="pro-details-compare-wishlist pro-details-wishlist ">
                                 <a href="wishlist.html"><i class="pe-7s-like"></i></a>
                             </div>
                             <div class="pro-details-compare-wishlist pro-details-wishlist ">
                                 <a href="compare.html"><i class="pe-7s-refresh-2"></i></a>
+                            </div> --}}
                             </div>
-                        </div>
+                        </form>
+
                     </div>
                     <!-- product details description area start -->
                     <div class="description-review-wrapper">
