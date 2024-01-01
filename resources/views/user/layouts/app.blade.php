@@ -22,6 +22,7 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{asset('users/assets/css/style.css')}}">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="https://kit.fontawesome.com/29d4f5ffc9.js" crossorigin="anonymous"></script>
     <!-- Minify Version -->
     <!-- <link rel="stylesheet" href="assets/css/plugins.min.css">
     <link rel="stylesheet" href="assets/css/style.min.css"> -->

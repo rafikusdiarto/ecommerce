@@ -256,7 +256,15 @@
                                                         {{-- <input type="hidden" value="{{$item->id}}" name="product_id" id="product_id"> --}}
                                                     </div>
                                                     <div>
-                                                        <button class="add-cart" type="submit"> Add To Cart</button>
+                                                        @if ($item->quantity == 0)
+                                                            <button class="add-cart" type="submit" disabled style="background-color: gray">
+                                                                <i class="fa-solid fa-cart-plus"></i>
+                                                            </button>
+                                                        @else
+                                                            <button class="add-cart" type="submit">
+                                                                <i class="fa-solid fa-cart-plus"></i>
+                                                            </button>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </form>
