@@ -31,9 +31,9 @@
                             </div>
                             <!-- Add Arrows -->
                             <!-- <div class="swiper-buttons">
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div> -->
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div> -->
                         </div>
                         <!-- Swiper -->
                         <div class="swiper-container zoom-top-2 align-self-start">
@@ -98,9 +98,10 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <span class="read-review"><a class="reviews" href="#">({{$countReview}} Customer Review)</a></span>
+                            <span class="read-review"><a class="reviews" href="#">({{ $countReview }} Customer
+                                    Review)</a></span>
                         </div>
-                        <p class="mt-30px">{{$getSingleProduct->product_short_des}}</p>
+                        <p class="mt-30px">{{ $getSingleProduct->product_short_des }}</p>
                         <div class="pro-details-categories-info pro-details-same-style d-flex m-0">
                             <span>SKU:</span>
                             <ul class="d-flex">
@@ -113,7 +114,7 @@
                             <span>Categories: </span>
                             <ul class="d-flex">
                                 <li>
-                                    <a href="#">{{$getSingleProduct->product_category_name}}</a>
+                                    <a href="#">{{ $getSingleProduct->product_category_name }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -149,13 +150,14 @@
                         <div class="description-review-topbar nav">
                             <button class="active" data-bs-toggle="tab"
                                 data-bs-target="#des-details1">Description</button>
-                            <button data-bs-toggle="tab" data-bs-target="#des-details3">{{$countReview}} Reviews</button>
+                            <button data-bs-toggle="tab" data-bs-target="#des-details3">{{ $countReview }}
+                                Reviews</button>
                         </div>
                         <div class="tab-content description-review-bottom">
                             <div id="des-details1" class="tab-pane active">
                                 <div class="product-description-wrapper">
                                     <p>
-                                        {{$getSingleProduct->product_long_des}}
+                                        {{ $getSingleProduct->product_long_des }}
                                     </p>
                                 </div>
                             </div>
@@ -172,7 +174,7 @@
                                                         <div class="review-top-wrap">
                                                             <div class="review-left">
                                                                 <div class="review-name">
-                                                                    <h4>{{$item->user->name}}</h4>
+                                                                    <h4>{{ $item->user->name }}</h4>
                                                                 </div>
                                                                 <div class="rating-product">
                                                                     <i class="fa fa-star"></i>
@@ -185,7 +187,7 @@
                                                         </div>
                                                         <div class="review-bottom">
                                                             <p>
-                                                                {{$item->review_description}}
+                                                                {{ $item->review_description }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -197,7 +199,9 @@
                                         <div class="ratting-form-wrapper pl-50">
                                             <h3>Add a Review</h3>
                                             <div class="ratting-form">
-                                                <form action="#">
+                                                <form method="POST"
+                                                    action="{{ route('createreview', $getSingleProduct->id) }}"
+                                                    enctype="multipart/form-data">
                                                     <div class="star-box">
                                                         <span>Your rating:</span>
                                                         <div class="rating-product">
@@ -209,20 +213,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="rating-form-style">
-                                                                <input placeholder="Name" type="text" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="rating-form-style">
-                                                                <input placeholder="Email" type="email" />
-                                                            </div>
-                                                        </div>
+                                                        @csrf
                                                         <div class="col-md-12">
                                                             <div class="rating-form-style form-submit">
-                                                                <textarea name="Your Review" placeholder="Message"></textarea>
-                                                                <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
+                                                                <input type="hidden" value="{{ $getSingleProduct->id }}"
+                                                                    name="product_id">
+                                                                <textarea name="review_description" placeholder="Message"></textarea>
+                                                                <button class="btn btn-primary"
+                                                                    type="submit">Submit</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -234,13 +232,15 @@
                             </div>
                         </div>
                     </div>
-                    <!-- product details description area end -->
                 </div>
             </div>
+            <!-- product details description area end -->
         </div>
-        @if (session('success'))
-            <script>
-                Swal.fire("Sukses", `{{ session('success') }}`, "success");
-            </script>
-        @endif
-    @endsection
+    </div>
+    </div>
+    @if (session('success'))
+        <script>
+            Swal.fire("Sukses", `{{ session('success') }}`, "success");
+        </script>
+    @endif
+@endsection
