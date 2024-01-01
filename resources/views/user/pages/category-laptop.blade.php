@@ -53,8 +53,18 @@
                                             <div class="product h-100">
                                                 <div class="thumb">
                                                     <a href="single-product.html" class="image">
-                                                        <img src="{{asset($item->product_img)}}" alt="Product" />
-                                                        <img class="hover-image" src="{{asset($item->product_img)}}" alt="Product" />
+                                                        @if ($item->quantity == 0)
+                                                        <div>
+                                                            <img src="{{asset($item->product_img)}}" style="filter:blur(2px)" alt="Product" />
+                                                            <h2 class="text-danger alert alert-warning" style="position: absolute;top: 0;
+                                                            left: 0;z-index:3">SOLD OUT</h2>
+                                                            <img class="hover-image" src="{{asset($item->product_img)}}" style="filter:blur(2px)" alt="Product" />
+
+                                                        </div>
+                                                        @else
+                                                            <img src="{{asset($item->product_img)}}" alt="Product" />
+                                                            <img class="hover-image" src="{{asset($item->product_img)}}" alt="Product" />
+                                                        @endif
                                                     </a>
                                                 </div>
                                                 <div class="content">
