@@ -3,6 +3,18 @@
 @section('content')
     <div class="product-details-area pt-100px pb-100px">
         <div class="container">
+            @if (session('success'))
+                <div alert class="alert alert-success">
+                    {{ session('success') }}</div>
+            @endif
+            @if (session('error'))
+                <div alert class="alert alert-danger">
+                    {{ session('error') }}</div>
+            @endif
+            @if (session('failed'))
+                <div alert class="alert alert-info">
+                    {{ session('failed') }}</div>
+            @endif
             <div class="row">
                 <div class="col-lg-6 col-sm-12 col-xs-12 mb-lm-30px mb-md-30px mb-sm-30px">
                     <div class="product-details-img product-details-tab product-details-tab-2 d-flex">
