@@ -23,7 +23,7 @@
                         <!-- Single Wedge Start -->
                         <a href="#offcanvas-cart" class="header-action-btn offcanvas-toggle">
                             <i class="pe-7s-shopbag"></i>
-                            <span class="header-action-num">{{$countOrder}}</span>
+                            <span class="header-action-num">{{ $countOrder }}</span>
                         </a>
                         <!-- Single Wedge End -->
                         {{-- <a href="#offcanvas-cart" class="header-action-btn header-action-btn-cart pr-0">
@@ -33,55 +33,58 @@
                         </a> --}}
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <div class="avatar avatar-online">
-                                <img src="{{asset('dashboard/assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
-                              </div>
+                                <div class="avatar avatar-online">
+                                    <img src="{{ asset('dashboard/assets/img/avatars/1.png') }}" alt
+                                        class="w-px-40 h-auto rounded-circle" />
+                                </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                              <li>
-                                <a class="dropdown-item" href="#">
-                                  <div class="d-flex">
-                                    <div class="flex-shrink-0 me-3">
-                                      <div class="avatar avatar-online">
-                                        <img src="{{asset('dashboard/assets/img/avatars/1.png')}}" alt class="w-px-40 h-auto rounded-circle" />
-                                      </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                      <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                              <li>
-                                <div class="dropdown-divider"></div>
-                              </li>
-                              <li>
-                                <a class="dropdown-item" href="{{route('editProfile', Auth::user()->id)}}">
-                                  <i class="bx bx-user me-2"></i>
-                                  <span class="align-middle">My Profile</span>
-                                </a>
-                              </li>
-                              <li>
-                                <a class="dropdown-item" href="#">
-                                  <i class="bx bx-cog me-2"></i>
-                                  <span class="align-middle">Settings</span>
-                                </a>
-                              </li>
-                              <li>
-                                <div class="dropdown-divider"></div>
-                              </li>
-                              <li>
-                              <form method="POST" action="{{route('logout')}}">
-                                  @csrf
-                                  <button type="submit" class="dropdown-item" href="auth-login-basic.html">
-                                    <i class="bx bx-power-off me-2"></i>
-                                    <span class="align-middle">Log Out</span>
-                                  </button>
-                              </form>
-                              </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar avatar-online">
+                                                    <img src="{{ asset('dashboard/assets/img/avatars/1.png') }}" alt
+                                                        class="w-px-40 h-auto rounded-circle" />
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('editProfile', Auth::user()->id) }}">
+                                        <i class="bx bx-user me-2"></i>
+                                        <span class="align-middle">My Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-cog me-2"></i>
+                                        <span class="align-middle">Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item" href="auth-login-basic.html">
+                                            <i class="bx bx-power-off me-2"></i>
+                                            <span class="align-middle">Log Out</span>
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </li>
-                        <a href="#offcanvas-mobile-menu" class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
+                        <a href="#offcanvas-mobile-menu"
+                            class="header-action-btn header-action-btn-menu offcanvas-toggle d-lg-none">
                             <i class="pe-7s-menu"></i>
                         </a>
 

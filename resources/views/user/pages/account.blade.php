@@ -8,7 +8,7 @@
                     <h2 class="breadcrumb-title">Account</h2>
                     <!-- breadcrumb-list start -->
                     <ul class="breadcrumb-list">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/user')}}">Home</a></li>
                         <li class="breadcrumb-item active">Account</li>
                     </ul>
                     <!-- breadcrumb-list end -->
@@ -17,7 +17,7 @@
         </div>
     </div>
     <!-- breadcrumb-area end -->
-    <!-- account area start -->
+    <!-- account area dstart -->
     <div class="account-dashboard pt-100px pb-100px">
         <div class="container">
             <div class="row">
