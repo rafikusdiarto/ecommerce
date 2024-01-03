@@ -78,7 +78,6 @@
                                                 <h2 class="text-danger alert alert-warning" style="position: absolute;top: 0;
                                                 left: 0;z-index:3">SOLD OUT</h2>
                                                 <img class="hover-image" src="{{ $item->product_img }}" style="filter:blur(2px)" alt="Product" />
-
                                             </div>
                                             @else
                                                 <img src="{{ $item->product_img }}" alt="Product" />

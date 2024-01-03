@@ -20,43 +20,58 @@
                     <div class="product-details-img product-details-tab product-details-tab-2 d-flex">
                         <div class="swiper-container mr-15px zoom-thumbs-2 align-self-start slider-nav-style-1 small-nav">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
-                                        alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
-                                        alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
-                                        alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
-                                        alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
-                                        alt="">
-                                </div>
+                                @if ($getSingleProduct->quantity == 0)
+                                    
+                                @else
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="">
+                                    </div>
+                                @endif
                             </div>
                             <!-- Add Arrows -->
                             <!-- <div class="swiper-buttons">
-                                            <div class="swiper-button-next"></div>
-                                            <div class="swiper-button-prev"></div>
-                                        </div> -->
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                            </div> -->
                         </div>
                         <!-- Swiper -->
                         <div class="swiper-container zoom-top-2 align-self-start">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
-                                        alt="">
-                                    <a class="venobox full-preview" data-gall="myGallery"
-                                        href="{{ asset($getSingleProduct->product_img) }}">
-                                        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                                    </a>
+                                    @if ($getSingleProduct->quantity == 0)
+                                        <div>
+                                            <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="" style="filter:blur(2px)"">
+                                            <h2 class="text-danger alert alert-warning"
+                                                style="position: absolute;top: 0;
+                                                left: 0;z-index:3">
+                                                SOLD OUT</h2>
+                                        </div>
+                                    @else
+                                        <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
+                                            alt="">
+                                            <a class="venobox full-preview" data-gall="myGallery"
+                                                href="{{ asset($getSingleProduct->product_img) }}">
+                                                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                                            </a>
+                                    @endif
                                 </div>
                                 <div class="swiper-slide">
                                     <img class="img-responsive m-auto" src="{{ asset($getSingleProduct->product_img) }}"
@@ -136,7 +151,7 @@
                                     <span>Subcategory: </span>
                                     <ul class="d-flex">
                                         <li>
-                                            <a href="#">{{$getSingleProduct->product_subcategory_name}}</a>
+                                            <a href="#">{{ $getSingleProduct->product_subcategory_name }}</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -171,10 +186,18 @@
                                     <input class="cart-plus-minus-box" type="number" name="jumlah_order"
                                         value="1" />
                                 </div>
+                                @if ($getSingleProduct->quantity == 0)
+                                <div class="pro-details-cart" style="display: block">
+                                    <button class="add-cart" type="submit" disabled> Add To
+                                        Cart</button>
+                                </div>
+                                @else
+
                                 <div class="pro-details-cart" style="display: block">
                                     <button class="add-cart" type="submit"> Add To
                                         Cart</button>
                                 </div>
+                                @endif
 
                                 {{-- <div class="pro-details-compare-wishlist pro-details-wishlist ">
                                 <a href="wishlist.html"><i class="pe-7s-like"></i></a>
