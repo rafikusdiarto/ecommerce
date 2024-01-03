@@ -46,7 +46,7 @@
                                             <div class="col-md-5 col-lg-5 col-xl-4 mb-lm-30px">
                                                 <div class="product">
                                                     <div class="thumb">
-                                                        <a href="single-product.html" class="image">
+                                                        <a class="image">
                                                             <img src="{{asset($item->product->product_img)}}" alt="Product" />
                                                             <img class="hover-image" src="{{asset($item->product->product_img)}}" alt="Product" />
                                                         </a>
@@ -66,7 +66,10 @@
                                                 <div class="content-desc-wrap">
                                                     <div class="content">
                                                         <span class="category"><a href="#">{{$item->product->product_category_name}}</a></span>
-                                                        <h5 class="title"><a href="single-product.html">{{$item->product->product_name}}</a></h5>
+                                                        <h5 class="title">
+                                                            <a href="{{ route('singleproduct', $item->product->id) }}">{{ $item->product->product_name }}
+                                                            </a>
+                                                        </h5>
                                                         <p>{{$item->product->product_short_des}}</p>
                                                     </div>
                                                     <div class="box-inner">

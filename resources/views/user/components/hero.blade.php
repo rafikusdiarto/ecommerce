@@ -11,7 +11,7 @@
                             <h2 class="title-1">Your Gaming Gear<br>
                             Good Devices & <br>
                              Best Solution </h2>
-                            <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                            <a href="#product-area" class="btn btn-primary text-capitalize">Shop All Devices</a>
                         </div>
                     </div>
 
@@ -28,7 +28,7 @@
                             <h2 class="title-1">Your Gaming Gear<br>
                             Good Devices & <br>
                              Best Solution </h2>
-                            <a href="shop-left-sidebar.html" class="btn btn-primary text-capitalize">Shop All Devices</a>
+                            <a href="#product-area" class="btn btn-primary text-capitalize">Shop All Devices</a>
                         </div>
                     </div>
 

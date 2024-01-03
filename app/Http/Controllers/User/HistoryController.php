@@ -24,7 +24,7 @@ class HistoryController extends Controller
                                             ['status','=','paid'],
                                             ])->orderBy('updated_at', 'desc')->get();
             $this->param['countHistoryOrder'] = Order::where(
-                                         'user_id', '=', Auth::user()->id
+                                            'user_id', '=', Auth::user()->id
                                         )->count();
             $this->param['getOrder'] = Order::where([
                                             ['status', '=', 'add to cart'],

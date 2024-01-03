@@ -62,8 +62,8 @@ input[type=number]::-webkit-outer-spin-button {
                                     <li class="my-4">
                                         <a href="single-product.html" class="image"><img src="{{asset($item->product->product_img)}}" alt="Cart product Image"></a>
                                         <div class="content">
-                                            <a href="single-product.html" class="title">{{$item->product->product_name}}</a>
-                                            <div class="d-flex">
+                                            <a class="title" href="{{ route('singleproduct', $item->product->id) }}">{{ $item->product->product_name }}
+                                                <div class="d-flex">
                                                 <input type="number" name="total_quantity" value="{{$item->total_quantity}}" class="form-control"/>
                                                 <p class="mx-2">x</p>
                                                 <span class="amount">@currency($item->product->price)</span>

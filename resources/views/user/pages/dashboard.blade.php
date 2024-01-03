@@ -51,7 +51,7 @@
     </div>
     <!-- Banner Area End -->
     <!-- Product Area Start -->
-    <div class="product-area pb-100px">
+    <div class="product-area pb-100px" id="product-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="content">
                                         <span class="category"><a
-                                                href="#">{{ $item->product_category_name }}</a></span>
+                                                >{{ $item->product_category_name }}</a></span>
                                         <h5 class="title"><a
                                                 href="{{ route('singleproduct', $item->id) }}">{{ $item->product_name }}
                                             </a>
