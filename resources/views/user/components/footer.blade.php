@@ -3,23 +3,23 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="mt-4">
-                    <img src="{{asset('users/images/logo-dark.png')}}" alt="" height="24">
-                    <p class="text-muted mt-3 pt-1">In an ideal world this text wouldn’t exist, a client would
-                        acknowledge
-                        the importance of having web copy before the design starts.</p>
+                    <img src="{{ asset('users/images/logo-dark.png') }}" alt="" height="24">
+                    <p class="text-muted mt-3 pt-1">Discover your gaming. Shop the latest device.
+                        Your one-stop shop for all things gaming.
+                        Unleash your shopping desires.
                     <div class="footer-social mt-4">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <a href="" class="text-reset"><i class="mdi mdi-facebook"></i></a>
+                                <a href="" class="text-reset"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="" class="text-reset"><i class="mdi mdi-twitter"></i></a>
+                                <a href="" class="text-reset"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="" class="text-reset"><i class="mdi mdi-google"></i></a>
+                                <a href="" class="text-reset"><i class="fa fa-google"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="" class="text-reset"><i class="mdi mdi-pinterest"></i></a>
+                                <a href="" class="text-reset"><i class="fa fa-pinterest"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -32,8 +32,8 @@
                         <div class="mt-4">
                             <h5 class="f-18">Support</h5>
                             <ul class="list-unstyled footer-link mt-3">
-                                <li><a href="">Facebook Integration</a></li>
-                                <li><a href="">wordpress Program</a></li>
+                                <li><a href="">Gaming Device</a></li>
+                                <li><a href="">Best Program</a></li>
                                 <li><a href="">Business Marketing</a></li>
                             </ul>
                         </div>
@@ -43,10 +43,10 @@
                         <div class="mt-4 ps-0 ps-lg-5">
                             <h5 class="f-18">More Info</h5>
                             <ul class="list-unstyled footer-link mt-3">
-                                <li><a href="">Pricing</a></li>
-                                <li><a href="">For Marketing</a></li>
-                                <li><a href="">For CEOs</a></li>
-                                <li><a href="">For Agencies</a></li>
+                                <li><a href="">Facebook</a></li>
+                                <li><a href="">Instagram</a></li>
+                                <li><a href="">TikTok</a></li>
+                                <li><a href="">Youtube</a></li>
                             </ul>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        {{-- <div class="row mt-3">
             <div class="col-lg-3">
                 <div class="client-images mt-4">
                     <img src="{{asset('users/assets/images/partner/1.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
@@ -86,7 +86,7 @@
                     <img src="{{asset('users/assets/images/partner/4.png')}}" alt="logo-img" class="mx-auto img-fluid d-block">
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <hr class="mt-5">
         <div class="row mt-4">
@@ -94,9 +94,7 @@
                 <p class="text-center text-muted mb-0">
                     2022 © R.Mart
                 </p>
-
             </div>
-
         </div>
 
     </div>

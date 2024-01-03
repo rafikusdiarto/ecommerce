@@ -7,7 +7,7 @@
                 <div class="row h-100">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
                         <div class="hero-slide-content slider-animated-1">
-                            <span class="category">Welcome To Hmart</span>
+                            <span class="category">Welcome To Rmart</span>
                             <h2 class="title-1">Your Gaming Gear<br>
                             Good Devices & <br>
                              Best Solution </h2>
@@ -24,7 +24,7 @@
                 <div class="row h-100">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 align-self-center sm-center-view">
                         <div class="hero-slide-content slider-animated-1">
-                            <span class="category">Welcome To Hmart</span>
+                            <span class="category">Welcome To Rmart</span>
                             <h2 class="title-1">Your Gaming Gear<br>
                             Good Devices & <br>
                              Best Solution </h2>
