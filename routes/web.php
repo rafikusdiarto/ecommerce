@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\AboutController;
 use App\Http\Controllers\Admin\OrderController;
@@ -104,5 +104,7 @@ Route::post('/user/checkout-order', [CartController::class, 'checkoutOrder'])->n
 Route::get('/user/history', [HistoryController::class, 'index'])->name('history');
 Route::get('/user/history-new', [HistoryController::class, 'historyNew'])->name('historynew');
 Route::get('/user/history/filter', [HistoryController::class, 'filter'])->name('filter');
+
+Route::get('/user/profile/{id}', [ProfileController::class, 'index'])->name('editProfile');
 
 require __DIR__.'/auth.php';
