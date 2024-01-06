@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'date_of_birth' => 'required',
             'password' => 'required|confirmed|min:8|same:password_confirmation',
             'password_confirmation' => 'required',
         ],
@@ -50,6 +51,7 @@ class RegisteredUserController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->date_of_birth = $request->date_of_birth;
             $user->email_verified_at = now();
             $user->password = bcrypt($request->password);
             $user->remember_token = \Str::random(60);

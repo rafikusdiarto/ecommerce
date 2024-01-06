@@ -34,8 +34,13 @@
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
                             <a class="nav-link dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="{{ asset('dashboard/assets/img/avatars/1.png') }}" alt
-                                        class="w-px-40 h-auto rounded-circle" />
+                                    @if (Auth::user()->image)
+                                        <img src="{{ asset(Auth::user()->image) }}" alt
+                                            class="w-px-40 h-auto rounded-circle" />
+                                    @else
+                                        <img src="{{ asset('dashboard/assets/img/avatars/1.png') }}" alt
+                                            class="w-px-40 h-auto rounded-circle" />
+                                    @endif
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -44,8 +49,13 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="{{ asset('dashboard/assets/img/avatars/1.png') }}" alt
-                                                        class="w-px-40 h-auto rounded-circle" />
+                                                    @if (Auth::user()->image)
+                                                        <img src="{{ asset(Auth::user()->image) }}" alt
+                                                            class="w-px-40 h-auto rounded-circle" />
+                                                    @else
+                                                        <img src="{{ asset('dashboard/assets/img/avatars/1.png') }}" alt
+                                                            class="w-px-40 h-auto rounded-circle" />
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
@@ -61,12 +71,6 @@
                                     <a class="dropdown-item" href="{{ route('editProfile', Auth::user()->id) }}">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">My Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bx bx-cog me-2"></i>
-                                        <span class="align-middle">Settings</span>
                                     </a>
                                 </li>
                                 <li>

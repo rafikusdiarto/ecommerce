@@ -53,12 +53,23 @@ class ProfileController extends Controller
         try {
             $request->validate([
                 'name' =>'required',
-                'email' =>'required'
+                'email' =>'required',
+                'date_of_birth' =>'required',
+                'profile_image' => 'mimes:png,jpg,jpeg'
             ]);
+
+            $image = $request->file('profile_image');
+            $img_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $request->profile_image->move(public_path('upload/users-profile'), $img_name);
+            $img_url = 'upload/users-profile/' . $img_name;
+
+            // dd($img_url);
 
             User::find($id)->update([
                 'name' => $request->name,
-                'email' => $request->email
+                'email' => $request->email,
+                'date_of_birth' => $request->date_of_birth,
+                'image' => $img_url
             ]);
 
             return redirect()->back()->with('success', 'profile successfully update');

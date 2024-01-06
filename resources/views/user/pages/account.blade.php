@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Image Profile</label>
-                                                <input type="file" name="image">
+                                                <input type="file" name="profile_image">
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Password</label>
@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Birthdate</label>
-                                                <input type="date" name="birthday">
+                                                <input type="date" value="{{$userDetail->date_of_birth}}" name="date_of_birth">
                                             </div>
                                             <span class="example">
                                                 (E.g.: 05/31/1970)

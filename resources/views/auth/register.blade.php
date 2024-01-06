@@ -53,6 +53,15 @@
                                 @enderror
                             </div>
                             <div class="mt-5">
+                                <div class="text-sm font-bold text-gray-700 tracking-wide" for="date_of_birth" >Date Of Birth</div>
+                                <input type="date" name="date_of_birth" required autofocus autocomplete="" class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" >
+                                @error('date_of_birth')
+                                <span class="pl-1 text-xs text-red-600 text-bold">
+                                    {{$message}}
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="mt-5">
                                 <div class="flex justify-between items-center">
                                     <div class="text-sm font-bold text-gray-700 tracking-wide" for="password" :value="__('Password')">
                                         Password
