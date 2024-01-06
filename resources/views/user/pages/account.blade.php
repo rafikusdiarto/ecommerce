@@ -103,7 +103,9 @@
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Image Profile</label>
-                                                <input type="file" name="profile_image">
+                                                <img src="{{ asset(Auth::user()->image) }}" style="height: 160px" alt
+                                                class="mb-3 rounded-circle" />
+                                                    <input type="file" name="profile_image">
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Password</label>
