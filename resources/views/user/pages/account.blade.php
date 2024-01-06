@@ -20,6 +20,18 @@
     <!-- account area dstart -->
     <div class="account-dashboard pt-100px pb-100px">
         <div class="container">
+            @if (session('success'))
+                <div alert class="alert alert-success">
+                    {{ session('success') }}</div>
+            @endif
+            @if (session('error'))
+                <div alert class="alert alert-danger">
+                    {{ session('error') }}</div>
+            @endif
+            @if (session('failed'))
+                <div alert class="alert alert-info">
+                    {{ session('failed') }}</div>
+            @endif
             <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3">
                     <!-- Nav tabs -->
@@ -73,63 +85,25 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="downloads">
-                            <h4>Downloads</h4>
-                            <div class="table_page table-responsive">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Downloads</th>
-                                            <th>Expires</th>
-                                            <th>Download</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                            <td>May 10, 2018</td>
-                                            <td><span class="danger">Expired</span></td>
-                                            <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Organic - ecommerce html template</td>
-                                            <td>Sep 11, 2018</td>
-                                            <td>Never</td>
-                                            <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="address">
-                            <p>The following addresses will be used on the checkout page by default.</p>
-                            <h5 class="billing-address">Billing address</h5>
-                            <a href="#" class="view">Edit</a>
-                            <p class="mb-2"><strong>Michael M Hoskins</strong></p>
-                            <address>
-                                <span class="mb-1 d-inline-block"><strong>City:</strong> Seattle</span>,
-                                <br>
-                                <span class="mb-1 d-inline-block"><strong>State:</strong> Washington(WA)</span>,
-                                <br>
-                                <span class="mb-1 d-inline-block"><strong>ZIP:</strong> 98101</span>,
-                                <br>
-                                <span><strong>Country:</strong> USA</span>
-                            </address>
-                        </div>
                         <div class="tab-pane fade" id="account-details">
                             <h3>Account details </h3>
                             <div class="login">
                                 <div class="login_form_container">
                                     <div class="account_login_form">
-                                        <form action="#">
+                                        <form action="{{url('/user/profile', $userDetail->id)}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
                                             <div class="default-form-box mb-20">
                                                 <label>First Name</label>
-                                                <input type="text" value="{{$userDetail->name}}" name="first-name">
+                                                <input type="text" value="{{$userDetail->name}}" name="name">
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Email</label>
-                                                <input type="text" value="{{$userDetail->email}}" name="email-name">
+                                                <input type="email" value="{{$userDetail->email}}" name="email">
+                                            </div>
+                                            <div class="default-form-box mb-20">
+                                                <label>Image Profile</label>
+                                                <input type="file" name="image">
                                             </div>
                                             <div class="default-form-box mb-20">
                                                 <label>Password</label>

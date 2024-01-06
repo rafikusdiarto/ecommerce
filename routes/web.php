@@ -106,5 +106,7 @@ Route::get('/user/history-new', [HistoryController::class, 'historyNew'])->name(
 Route::get('/user/history/filter', [HistoryController::class, 'filter'])->name('filter');
 
 Route::get('/user/profile/{id}', [ProfileController::class, 'index'])->name('editProfile');
+Route::put('/user/profile/{id}', [ProfileController::class, 'update'])->name('updateProfile');
+
 
 require __DIR__.'/auth.php';

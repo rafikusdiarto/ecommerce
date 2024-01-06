@@ -40,8 +40,28 @@ class ProfileController extends Controller
                                             ['user_id', '=', Auth::user()->id]
                                         ])->sum('total_price');
             $this->param['userDetail'] = User::findOrFail($id);
-                
+
             return view('user.pages.account', $this->param);
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, $id){
+        try {
+            $request->validate([
+                'name' =>'required',
+                'email' =>'required'
+            ]);
+
+            User::find($id)->update([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+
+            return redirect()->back()->with('success', 'profile successfully update');
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
