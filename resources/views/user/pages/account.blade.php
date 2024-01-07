@@ -49,9 +49,9 @@
                     <div class="tab-content dashboard_content" data-aos="fade-up" data-aos-delay="200">
                         <div class="tab-pane fade show active" id="dashboard">
                             <h4>Dashboard </h4>
-                            <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent
-                                    orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a
-                                    href="#">Edit your password and account details.</a></p>
+                            <p>From your account dashboard. you can easily check &amp; view your
+                                <a href="">recent orders : {{$countOrder}}</a>, manage your <a href="">shipping and billing addresses</a> and <a
+                                href="#account-details" data-bs-toggle="tab">Edit your password and account details.</a></p>
                         </div>
                         <div class="tab-pane fade" id="orders">
                             <h4>Orders</h4>
@@ -67,20 +67,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>May 10, 2018</td>
-                                            <td><span class="success">Completed</span></td>
-                                            <td>$25.00 for 1 item </td>
-                                            <td><a href="cart.html" class="view">view</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>May 10, 2018</td>
-                                            <td>Processing</td>
-                                            <td>$17.00 for 1 item </td>
-                                            <td><a href="cart.html" class="view">view</a></td>
-                                        </tr>
+                                        <?php $no=1 ?>
+                                        @foreach ($getAllOrders as $item)
+                                            <tr>
+                                                <td>{{$no++}}</td>
+                                                <td>{{$item->created_at}}/td>
+                                                @if ($item->status == 'paid')
+                                                    <td><span class="alert alert-success">{{$item->status}}</span></td>
+                                                @elseif ($item->status == 'add to cart')
+                                                    <td><span class="alert alert-info">{{$item->status}}</span></td>
+                                                @else()
+                                                    <td><span class="alert alert-info">{{$item->status}}</span></td>
+                                                @endif
+                                                <td>@currency($item->total_price)</td>
+                                                <td><a href="{{url('/user/my-cart')}}" class="view">view</a></td>
+                                            </tr>
+
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

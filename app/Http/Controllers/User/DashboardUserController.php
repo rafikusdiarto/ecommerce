@@ -47,7 +47,6 @@ class DashboardUserController extends Controller
 
 
     public function addToCart(Request $request, $id){
-
         try {
             $product = Product::find($id);
 
@@ -64,9 +63,8 @@ class DashboardUserController extends Controller
 
             $order = Order::where('product_id', $id)
                     ->where('status', 'add to cart')
+                    ->where('user_id', Auth::user()->id)
                     ->first();;
-
-
             if ($order) {
                 if ($jumlah_order <= $product->quantity) {
                     $jumlahDiKeranjang = $order->total_quantity;
@@ -95,7 +93,7 @@ class DashboardUserController extends Controller
                     return redirect()->back()->with('failed', 'Failed order product !');
                 }
             }
-            return redirect()->back()->with('success', 'Product successfully added to cart !');
+            return redirect()->back()->with('success', 'Product successfully dsa    added to cart !');
 
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());

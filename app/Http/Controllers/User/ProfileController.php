@@ -39,6 +39,7 @@ class ProfileController extends Controller
                                             ['status', '=', 'add to cart'],
                                             ['user_id', '=', Auth::user()->id]
                                         ])->sum('total_price');
+            $this->param['getAllOrders'] = Order::where('user_id',  Auth::user()->id)->get();
             $this->param['userDetail'] = User::findOrFail($id);
 
             return view('user.pages.account', $this->param);
