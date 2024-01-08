@@ -28,21 +28,11 @@
                         <div class="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">R-mart</div>
                     </div>
                 </div>
-                @if (session('success'))
-                <div alert class="alert alert-success">
-                    {{ session('success') }}</div>
-                @endif
-                @if (session('error'))
-                    <div alert class="alert alert-danger">
-                        {{ session('error') }}</div>
-                @endif
-                @if (session('failed'))
-                    <div alert class="alert alert-info">
-                        {{ session('failed') }}</div>
-                @endif
                 <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
                     <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Log in</h2>
+                    <x-auth-session-status class="mt-4" :status="session('success')" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-4" />
                     <div class="mt-12">
                         <form method="POST" action="{{ url('login') }}">
                             @csrf
